@@ -1,0 +1,34 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {
+    "allowModernEvaluationEngine": true
+  },
+  "name": "Dataflow 1",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "item": {
+      "queryId": "84e63b3b-22ca-4cd7-8252-e31d180b1d88",
+      "queryName": "item",
+      "loadEnabled": false
+    },
+    "item_DataDestination": {
+      "queryId": "b25d7aab-9316-415d-846a-53793ac86ffa",
+      "queryName": "item_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "https://www.dropbox.com/scl/fi/uqhnqno2ltdqxs6iwnl59/Item-Sample-data.xlsx?rlkey=a18223vi4l1wwkrc4sc4cfndi&st=yxoti300&dl=1",
+      "kind": "Web",
+      "connectionId": "{\"ClusterId\":\"22b456ef-22b3-41a3-886e-1a64507eaaa1\",\"DatasourceId\":\"7f7993e8-0c0d-481d-a78f-7d950ef55811\"}"
+    },
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"22b456ef-22b3-41a3-886e-1a64507eaaa1\",\"DatasourceId\":\"ebfec9d9-1e75-4f95-8ef2-03d7719c7429\"}"
+    }
+  ]
+}

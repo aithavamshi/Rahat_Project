@@ -1,0 +1,1684 @@
+{
+  "name": "{{Dataset_Name}}",
+  "compatibilityLevel": 1604,
+  "model": {
+    "name": "{{Dataset_Name}}",
+    "culture": "en-US",
+    "collation": "Latin1_General_100_BIN2_UTF8",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "Item27",
+        "sourceLineageTag": "[gold].[Item27]",
+        "columns": [
+          {
+            "name": "WTIAAllocJnlUnitofMeasure",
+            "dataType": "string",
+            "sourceColumn": "WTIAAllocJnlUnitofMeasure",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "WTIAAllocJnlUnitofMeasure",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "VendorItemNo",
+            "dataType": "string",
+            "sourceColumn": "VendorItemNo",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "VendorItemNo",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WCINV08WHItemNo",
+            "dataType": "string",
+            "sourceColumn": "WCINV08WHItemNo",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "WCINV08WHItemNo",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTUSSalesLimAllocMethod",
+            "dataType": "string",
+            "sourceColumn": "WTUSSalesLimAllocMethod",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "WTUSSalesLimAllocMethod",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "LeadTimeCalculation",
+            "dataType": "string",
+            "sourceColumn": "LeadTimeCalculation",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "LeadTimeCalculation",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTBAClosureTypeCode",
+            "dataType": "string",
+            "sourceColumn": "WTBAClosureTypeCode",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "WTBAClosureTypeCode",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTBASubRegionCode",
+            "dataType": "string",
+            "sourceColumn": "WTBASubRegionCode",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "WTBASubRegionCode",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WarehouseClassCode",
+            "dataType": "string",
+            "sourceColumn": "WarehouseClassCode",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "WarehouseClassCode",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ItemDiscGroup",
+            "dataType": "string",
+            "sourceColumn": "ItemDiscGroup",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ItemDiscGroup",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTBAWineColor",
+            "dataType": "string",
+            "sourceColumn": "WTBAWineColor",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "WTBAWineColor",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTUSCOLANo",
+            "dataType": "string",
+            "sourceColumn": "WTUSCOLANo",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "WTUSCOLANo",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTBAOriginRegionCode-87005",
+            "dataType": "string",
+            "sourceColumn": "WTBAOriginRegionCode-87005",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "WTBAOriginRegionCode-87005",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTBAVarietalCode",
+            "dataType": "string",
+            "sourceColumn": "WTBAVarietalCode",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "WTBAVarietalCode",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTBABrandNo",
+            "dataType": "string",
+            "sourceColumn": "WTBABrandNo",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "WTBABrandNo",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTBAVintageCode",
+            "dataType": "string",
+            "sourceColumn": "WTBAVintageCode",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "WTBAVintageCode",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTBAAlcoholTypeCode",
+            "dataType": "string",
+            "sourceColumn": "WTBAAlcoholTypeCode",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "WTBAAlcoholTypeCode",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WCINV04PurchaserCode",
+            "dataType": "string",
+            "sourceColumn": "WCINV04PurchaserCode",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "WCINV04PurchaserCode",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTBALabelCode",
+            "dataType": "string",
+            "sourceColumn": "WTBALabelCode",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "WTBALabelCode",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CountryRegionofOriginCode",
+            "dataType": "string",
+            "sourceColumn": "CountryRegionofOriginCode",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CountryRegionofOriginCode",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WCINV14ItemPortfolio",
+            "dataType": "string",
+            "sourceColumn": "WCINV14ItemPortfolio",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "WCINV14ItemPortfolio",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "GenProdPostingGroup",
+            "dataType": "string",
+            "sourceColumn": "GenProdPostingGroup",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "GenProdPostingGroup",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "InventoryPostingGroup",
+            "dataType": "string",
+            "sourceColumn": "InventoryPostingGroup",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "InventoryPostingGroup",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "VendorNo",
+            "dataType": "string",
+            "sourceColumn": "VendorNo",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "VendorNo",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTBABottleSize",
+            "dataType": "string",
+            "sourceColumn": "WTBABottleSize",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "WTBABottleSize",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "$Company",
+            "dataType": "string",
+            "sourceColumn": "$Company",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "$Company",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "AllowInvoiceDisc",
+            "dataType": "boolean",
+            "sourceColumn": "AllowInvoiceDisc",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "AllowInvoiceDisc",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "AllowOnlineAdjustment",
+            "dataType": "boolean",
+            "sourceColumn": "AllowOnlineAdjustment",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "AllowOnlineAdjustment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "BaseUnitofMeasure",
+            "dataType": "string",
+            "sourceColumn": "BaseUnitofMeasure",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "BaseUnitofMeasure",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Blocked",
+            "dataType": "boolean",
+            "sourceColumn": "Blocked",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "Blocked",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Description",
+            "dataType": "string",
+            "sourceColumn": "Description",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Description",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ItemCategoryCode",
+            "dataType": "string",
+            "sourceColumn": "ItemCategoryCode",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ItemCategoryCode",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "LastDateModified",
+            "dataType": "dateTime",
+            "sourceColumn": "LastDateModified",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "LastDateModified",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "LastDateTimeModified",
+            "dataType": "dateTime",
+            "sourceColumn": "LastDateTimeModified",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "LastDateTimeModified",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "LastDirectCost",
+            "dataType": "double",
+            "sourceColumn": "LastDirectCost",
+            "sourceProviderType": "real",
+            "sourceLineageTag": "LastDirectCost",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "LastTimeModified",
+            "dataType": "string",
+            "sourceColumn": "LastTimeModified",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "LastTimeModified",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "NetWeight",
+            "dataType": "int64",
+            "sourceColumn": "NetWeight",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "NetWeight",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "No",
+            "dataType": "string",
+            "sourceColumn": "No",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "No",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PurchasingBlocked",
+            "dataType": "boolean",
+            "sourceColumn": "PurchasingBlocked",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "PurchasingBlocked",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SalesUnitofMeasure",
+            "dataType": "string",
+            "sourceColumn": "SalesUnitofMeasure",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SalesUnitofMeasure",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SearchDescription",
+            "dataType": "string",
+            "sourceColumn": "SearchDescription",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SearchDescription",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "StandardCost",
+            "dataType": "int64",
+            "sourceColumn": "StandardCost",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "StandardCost",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SystemCreatedAt",
+            "dataType": "dateTime",
+            "sourceColumn": "SystemCreatedAt",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "SystemCreatedAt",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SystemCreatedBy",
+            "dataType": "string",
+            "sourceColumn": "SystemCreatedBy",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SystemCreatedBy",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SystemModifiedAt",
+            "dataType": "dateTime",
+            "sourceColumn": "SystemModifiedAt",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "SystemModifiedAt",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "UnitCost",
+            "dataType": "double",
+            "sourceColumn": "UnitCost",
+            "sourceProviderType": "real",
+            "sourceLineageTag": "UnitCost",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "UnitListPrice",
+            "dataType": "int64",
+            "sourceColumn": "UnitListPrice",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "UnitListPrice",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "UnitPrice",
+            "dataType": "int64",
+            "sourceColumn": "UnitPrice",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "UnitPrice",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "UnitVolume",
+            "dataType": "double",
+            "sourceColumn": "UnitVolume",
+            "sourceProviderType": "real",
+            "sourceLineageTag": "UnitVolume",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "UseCrossDocking",
+            "dataType": "boolean",
+            "sourceColumn": "UseCrossDocking",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "UseCrossDocking",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WCAR06SalesCommissionable",
+            "dataType": "boolean",
+            "sourceColumn": "WCAR06SalesCommissionable",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "WCAR06SalesCommissionable",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WCINT02ExportedtoJFHB",
+            "dataType": "boolean",
+            "sourceColumn": "WCINT02ExportedtoJFHB",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "WCINT02ExportedtoJFHB",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WCINT03ExportedtoMMK",
+            "dataType": "boolean",
+            "sourceColumn": "WCINT03ExportedtoMMK",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "WCINT03ExportedtoMMK",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WCINT04PABlocked",
+            "dataType": "boolean",
+            "sourceColumn": "WCINT04PABlocked",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "WCINT04PABlocked",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WCINT04SplitAllowed",
+            "dataType": "boolean",
+            "sourceColumn": "WCINT04SplitAllowed",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "WCINT04SplitAllowed",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WCINV08AgedInventory",
+            "dataType": "boolean",
+            "sourceColumn": "WCINV08AgedInventory",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "WCINV08AgedInventory",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WCINV08ExpectedQtyfromVend",
+            "dataType": "int64",
+            "sourceColumn": "WCINV08ExpectedQtyfromVend",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "WCINV08ExpectedQtyfromVend",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WCINV08NAforSalesreps",
+            "dataType": "boolean",
+            "sourceColumn": "WCINV08NAforSalesreps",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "WCINV08NAforSalesreps",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WCINV08SuggestedRetailPrice",
+            "dataType": "double",
+            "sourceColumn": "WCINV08SuggestedRetailPrice",
+            "sourceProviderType": "real",
+            "sourceLineageTag": "WCINV08SuggestedRetailPrice",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "WCINV19DonotPrintonCat",
+            "dataType": "boolean",
+            "sourceColumn": "WCINV19DonotPrintonCat",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "WCINV19DonotPrintonCat",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WCSAL04AllowPalletDiscount",
+            "dataType": "boolean",
+            "sourceColumn": "WCSAL04AllowPalletDiscount",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "WCSAL04AllowPalletDiscount",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WCSAL04AllowSampleDiscount",
+            "dataType": "boolean",
+            "sourceColumn": "WCSAL04AllowSampleDiscount",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "WCSAL04AllowSampleDiscount",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WCTEWPrestige",
+            "dataType": "boolean",
+            "sourceColumn": "WCTEWPrestige",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "WCTEWPrestige",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTBAAlcoholContent",
+            "dataType": "double",
+            "sourceColumn": "WTBAAlcoholContent",
+            "sourceProviderType": "real",
+            "sourceLineageTag": "WTBAAlcoholContent",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "WTBABiodynamic",
+            "dataType": "boolean",
+            "sourceColumn": "WTBABiodynamic",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "WTBABiodynamic",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTBACasePack",
+            "dataType": "int64",
+            "sourceColumn": "WTBACasePack",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "WTBACasePack",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTBACasesperPallet",
+            "dataType": "int64",
+            "sourceColumn": "WTBACasesperPallet",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "WTBACasesperPallet",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTBACasesperPalletLayer",
+            "dataType": "int64",
+            "sourceColumn": "WTBACasesperPalletLayer",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "WTBACasesperPalletLayer",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTBADoNotAllowSamples",
+            "dataType": "boolean",
+            "sourceColumn": "WTBADoNotAllowSamples",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "WTBADoNotAllowSamples",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTBAExclfromSampleBudget",
+            "dataType": "int64",
+            "sourceColumn": "WTBAExclfromSampleBudget",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "WTBAExclfromSampleBudget",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTBALastDirectCostBottle",
+            "dataType": "double",
+            "sourceColumn": "WTBALastDirectCostBottle",
+            "sourceProviderType": "real",
+            "sourceLineageTag": "WTBALastDirectCostBottle",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "WTBALastDirectCostCase",
+            "dataType": "double",
+            "sourceColumn": "WTBALastDirectCostCase",
+            "sourceProviderType": "real",
+            "sourceLineageTag": "WTBALastDirectCostCase",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "WTBALayersperPallet",
+            "dataType": "int64",
+            "sourceColumn": "WTBALayersperPallet",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "WTBALayersperPallet",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTBAOrganic",
+            "dataType": "boolean",
+            "sourceColumn": "WTBAOrganic",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "WTBAOrganic",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTBAProof",
+            "dataType": "double",
+            "sourceColumn": "WTBAProof",
+            "sourceProviderType": "real",
+            "sourceLineageTag": "WTBAProof",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "WTBASalesOrderReview",
+            "dataType": "boolean",
+            "sourceColumn": "WTBASalesOrderReview",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "WTBASalesOrderReview",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTBAStandardCostBottle",
+            "dataType": "int64",
+            "sourceColumn": "WTBAStandardCostBottle",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "WTBAStandardCostBottle",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTBAStandardCostCase",
+            "dataType": "int64",
+            "sourceColumn": "WTBAStandardCostCase",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "WTBAStandardCostCase",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTBAUnitCostBottle",
+            "dataType": "double",
+            "sourceColumn": "WTBAUnitCostBottle",
+            "sourceProviderType": "real",
+            "sourceLineageTag": "WTBAUnitCostBottle",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "WTBAUnitCostCase",
+            "dataType": "double",
+            "sourceColumn": "WTBAUnitCostCase",
+            "sourceProviderType": "real",
+            "sourceLineageTag": "WTBAUnitCostCase",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "WTBAVegan",
+            "dataType": "boolean",
+            "sourceColumn": "WTBAVegan",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "WTBAVegan",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTIAAllocate",
+            "dataType": "boolean",
+            "sourceColumn": "WTIAAllocate",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "WTIAAllocate",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTIAAllocationReservInt",
+            "dataType": "string",
+            "sourceColumn": "WTIAAllocationReservInt",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "WTIAAllocationReservInt",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTIAAllocationisCurrent",
+            "dataType": "boolean",
+            "sourceColumn": "WTIAAllocationisCurrent",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "WTIAAllocationisCurrent",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTIAFullAllocationRequired",
+            "dataType": "boolean",
+            "sourceColumn": "WTIAFullAllocationRequired",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "WTIAFullAllocationRequired",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTIALimitingQtyperSource",
+            "dataType": "int64",
+            "sourceColumn": "WTIALimitingQtyperSource",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "WTIALimitingQtyperSource",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTIALimitingUnitType",
+            "dataType": "string",
+            "sourceColumn": "WTIALimitingUnitType",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "WTIALimitingUnitType",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTUSDonotPricePost",
+            "dataType": "boolean",
+            "sourceColumn": "WTUSDonotPricePost",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "WTUSDonotPricePost",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WTUSSalesLimitation",
+            "dataType": "string",
+            "sourceColumn": "WTUSSalesLimitation",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "WTUSSalesLimitation",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "systemId",
+            "dataType": "string",
+            "sourceColumn": "systemId",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "systemId",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "timestamp",
+            "dataType": "int64",
+            "sourceColumn": "timestamp",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "timestamp",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "InsertDate",
+            "dataType": "dateTime",
+            "sourceColumn": "InsertDate",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "InsertDate",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "UpdateDate",
+            "dataType": "dateTime",
+            "sourceColumn": "UpdateDate",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "UpdateDate",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "Item27",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "gold"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "SalesDetails",
+        "sourceLineageTag": "[gold].[SalesDetails]",
+        "columns": [
+          {
+            "name": "name",
+            "dataType": "string",
+            "sourceColumn": "name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "category_name",
+            "dataType": "string",
+            "sourceColumn": "category_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "category_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ship_to_city",
+            "dataType": "string",
+            "sourceColumn": "ship_to_city",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ship_to_city",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ship_to_state",
+            "dataType": "string",
+            "sourceColumn": "ship_to_state",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ship_to_state",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "posting_date",
+            "dataType": "dateTime",
+            "sourceColumn": "posting_date",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "posting_date",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "document_no",
+            "dataType": "string",
+            "sourceColumn": "document_no",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "document_no",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "customer_name",
+            "dataType": "string",
+            "sourceColumn": "customer_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "customer_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "item_no",
+            "dataType": "string",
+            "sourceColumn": "item_no",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "item_no",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "item_description",
+            "dataType": "string",
+            "sourceColumn": "item_description",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "item_description",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "cases_sold",
+            "dataType": "double",
+            "sourceColumn": "cases_sold",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "cases_sold",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "sales",
+            "dataType": "double",
+            "sourceColumn": "sales",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "sales",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "gross_profit",
+            "dataType": "double",
+            "sourceColumn": "gross_profit",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "gross_profit",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "gross_margin",
+            "dataType": "double",
+            "sourceColumn": "gross_margin",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "gross_margin",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "InsertDate",
+            "dataType": "dateTime",
+            "sourceColumn": "InsertDate",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "InsertDate",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "UpdateDate",
+            "dataType": "dateTime",
+            "sourceColumn": "UpdateDate",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "UpdateDate",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "SalesDetails",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "gold"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      }
+    ],
+    "expressions": [
+      {
+        "name": "DatabaseQuery",
+        "kind": "m",
+        "expression": "let\n    database = {{TDS_Endpoint}}\nin\n    database\n"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "SourceLineageTagType",
+        "value": "DatabaseFullyQualifiedName"
+      }
+    ]
+  }
+}
