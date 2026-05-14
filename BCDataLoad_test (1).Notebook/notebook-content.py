@@ -60,6 +60,19 @@
 # MAGIC no_Partition = 258 #how many partition is used in the dataframe, a good starting point might be 2-4 partitions per CPU core in your Spark cluster
 # MAGIC DecimalFormat = 'float' #how to format the decimal numbers, can be 'float' or 'decimal(10,3)'. If you change this it will be a breaking change for the table
 # MAGIC DateTimeFormat = 'timestamp' #how to format the datetime, can be 'timestamp' or 'date'. If you change this it will be a breaking change for the table
+# MAGIC run_id = ""
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+print(run_id)
 
 # METADATA ********************
 
@@ -349,7 +362,7 @@
 # MAGIC     audit_df.write \
 # MAGIC         .mode("append") \
 # MAGIC         .format("delta") \
-# MAGIC         .save("Tables/audit_log__table")
+# MAGIC         .save("Tables/audit_log_table")
 # MAGIC 
 # MAGIC     print(f"Audit log written for: {table_name} | Status: {status}")
 # MAGIC 
@@ -439,6 +452,26 @@
 # MAGIC 
 # MAGIC                     delta_table  = DeltaTable.forName(spark, table_name)
 # MAGIC 
+# MAGIC                     df_old = delta_table.toDF()
+# MAGIC 
+# MAGIC                     inserted = df_new.alias("new").join(
+# MAGIC                         df_old.alias("old"),
+# MAGIC                         on="systemId-2000000000",
+# MAGIC                         how="leftanti"
+# MAGIC                     ).count()
+# MAGIC 
+# MAGIC                     # Get old table as DataFrame
+# MAGIC                     
+# MAGIC                     #df_old = spark.table(table_name)
+# MAGIC 
+# MAGIC                     # Identify updated rows
+# MAGIC                     df_updates = df_new.alias("new").join(
+# MAGIC                         df_old.alias("old"),
+# MAGIC                         col("new.`systemId-2000000000`") == col("old.`systemId-2000000000`")
+# MAGIC                     ).filter(
+# MAGIC                         col("new.`SystemModifiedAt-2000000003`") > col("old.`SystemModifiedAt-2000000003`")
+# MAGIC                     )
+# MAGIC 
 # MAGIC                 
 # MAGIC                     # HANDLE DELETES
 # MAGIC                   
@@ -473,16 +506,7 @@
 # MAGIC                                    .filter(col("rn") == 1) \
 # MAGIC                                    .drop("rn")
 # MAGIC                     
-# MAGIC                     # Get old table as DataFrame
-# MAGIC                     df_old = delta_table.toDF()
-# MAGIC 
-# MAGIC                     # Identify updated rows
-# MAGIC                     df_updates = df_new.alias("new").join(
-# MAGIC                         df_old.alias("old"),
-# MAGIC                         col("new.`systemId-2000000000`") == col("old.`systemId-2000000000`")
-# MAGIC                     ).filter(
-# MAGIC                         col("new.`SystemModifiedAt-2000000003`") > col("old.`SystemModifiedAt-2000000003`")
-# MAGIC                     )
+# MAGIC                     
 # MAGIC 
 # MAGIC                     # Count updates
 # MAGIC                     updated = df_updates.count()
@@ -505,12 +529,12 @@
 # MAGIC                    
 # MAGIC                     # CAPTURE MERGE METRICS
 # MAGIC                 
-# MAGIC                     try:
-# MAGIC                         inserted = merge_result["numTargetRowsInserted"]
+# MAGIC                     #try:
+# MAGIC                         #inserted = merge_result["numTargetRowsInserted"]
 # MAGIC                         #updated  = merge_result["numTargetRowsUpdated"]
 # MAGIC                         #deleted  = merge_result["numTargetRowsDeleted"]
-# MAGIC                     except:
-# MAGIC                         inserted = df_new.count()
+# MAGIC                     #except:
+# MAGIC                         #inserted = df_new.count()
 # MAGIC                         #updated  = 0
 # MAGIC                         #deleted  = 0
 # MAGIC 

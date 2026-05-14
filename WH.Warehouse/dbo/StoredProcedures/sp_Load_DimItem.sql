@@ -1,4 +1,4 @@
-CREATE   PROCEDURE sp_Load_DimItem
+CREATE     PROCEDURE sp_Load_DimItem
 AS
 BEGIN
 --Insert 

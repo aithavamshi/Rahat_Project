@@ -13,6 +13,176 @@
     "sourceQueryCulture": "en-US",
     "tables": [
       {
+        "name": "silver_audit_log",
+        "sourceLineageTag": "[dbo].[silver_audit_log]",
+        "columns": [
+          {
+            "name": "RunId",
+            "dataType": "string",
+            "sourceColumn": "RunId",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "RunId",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "TableName",
+            "dataType": "string",
+            "sourceColumn": "TableName",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "TableName",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "StartTime",
+            "dataType": "dateTime",
+            "sourceColumn": "StartTime",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "StartTime",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "EndTime",
+            "dataType": "dateTime",
+            "sourceColumn": "EndTime",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "EndTime",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Status",
+            "dataType": "string",
+            "sourceColumn": "Status",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Status",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "RowsInserted",
+            "dataType": "int64",
+            "sourceColumn": "RowsInserted",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "RowsInserted",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "RowsUpdated",
+            "dataType": "int64",
+            "sourceColumn": "RowsUpdated",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "RowsUpdated",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "RowsDeleted",
+            "dataType": "int64",
+            "sourceColumn": "RowsDeleted",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "RowsDeleted",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "FilesProcessed",
+            "dataType": "int64",
+            "sourceColumn": "FilesProcessed",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "FilesProcessed",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ErrorMessage",
+            "dataType": "string",
+            "sourceColumn": "ErrorMessage",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ErrorMessage",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "silver_audit_log",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
         "name": "Item27",
         "sourceLineageTag": "[gold].[Item27]",
         "columns": [
@@ -1652,6 +1822,445 @@
               "entityName": "SalesDetails",
               "expressionSource": "DatabaseQuery",
               "schemaName": "gold"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "CustLedgerEntry21",
+        "sourceLineageTag": "[silver].[CustLedgerEntry21]",
+        "columns": [
+          {
+            "name": "GlobalDimension1Code-23",
+            "dataType": "string",
+            "sourceColumn": "GlobalDimension1Code-23",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "GlobalDimension1Code-23",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ExternalDocumentNo-63",
+            "dataType": "string",
+            "sourceColumn": "ExternalDocumentNo-63",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ExternalDocumentNo-63",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SalespersonCode-25",
+            "dataType": "string",
+            "sourceColumn": "SalespersonCode-25",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SalespersonCode-25",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Description-7",
+            "dataType": "string",
+            "sourceColumn": "Description-7",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Description-7",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CustomerNo-3",
+            "dataType": "string",
+            "sourceColumn": "CustomerNo-3",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CustomerNo-3",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "$Company",
+            "dataType": "string",
+            "sourceColumn": "$Company",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "$Company",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "$DeliveredDateTime",
+            "dataType": "dateTime",
+            "sourceColumn": "$DeliveredDateTime",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "$DeliveredDateTime",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "AppliestoDocType-34",
+            "dataType": "string",
+            "sourceColumn": "AppliestoDocType-34",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "AppliestoDocType-34",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CustomerName-8",
+            "dataType": "string",
+            "sourceColumn": "CustomerName-8",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CustomerName-8",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CustomerPostingGroup-22",
+            "dataType": "string",
+            "sourceColumn": "CustomerPostingGroup-22",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CustomerPostingGroup-22",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "DocumentDate-62",
+            "dataType": "dateTime",
+            "sourceColumn": "DocumentDate-62",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "DocumentDate-62",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "DocumentNo-6",
+            "dataType": "string",
+            "sourceColumn": "DocumentNo-6",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "DocumentNo-6",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "DocumentType-5",
+            "dataType": "string",
+            "sourceColumn": "DocumentType-5",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "DocumentType-5",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "DueDate-37",
+            "dataType": "dateTime",
+            "sourceColumn": "DueDate-37",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "DueDate-37",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "EntryNo-1",
+            "dataType": "int64",
+            "sourceColumn": "EntryNo-1",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "EntryNo-1",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "InvDiscountLCY-20",
+            "dataType": "double",
+            "sourceColumn": "InvDiscountLCY-20",
+            "sourceProviderType": "real",
+            "sourceLineageTag": "InvDiscountLCY-20",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "PostingDate-4",
+            "dataType": "dateTime",
+            "sourceColumn": "PostingDate-4",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "PostingDate-4",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ProfitLCY-19",
+            "dataType": "double",
+            "sourceColumn": "ProfitLCY-19",
+            "sourceProviderType": "real",
+            "sourceLineageTag": "ProfitLCY-19",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "SalesLCY-18",
+            "dataType": "double",
+            "sourceColumn": "SalesLCY-18",
+            "sourceProviderType": "real",
+            "sourceLineageTag": "SalesLCY-18",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "SelltoCustomerNo-21",
+            "dataType": "string",
+            "sourceColumn": "SelltoCustomerNo-21",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SelltoCustomerNo-21",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SystemCreatedAt-2000000001",
+            "dataType": "dateTime",
+            "sourceColumn": "SystemCreatedAt-2000000001",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "SystemCreatedAt-2000000001",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SystemCreatedBy-2000000002",
+            "dataType": "string",
+            "sourceColumn": "SystemCreatedBy-2000000002",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SystemCreatedBy-2000000002",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SystemModifiedAt-2000000003",
+            "dataType": "dateTime",
+            "sourceColumn": "SystemModifiedAt-2000000003",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "SystemModifiedAt-2000000003",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "TransactionNo-53",
+            "dataType": "int64",
+            "sourceColumn": "TransactionNo-53",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "TransactionNo-53",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "systemId-2000000000",
+            "dataType": "string",
+            "sourceColumn": "systemId-2000000000",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "systemId-2000000000",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "timestamp-0",
+            "dataType": "int64",
+            "sourceColumn": "timestamp-0",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "timestamp-0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "InsertDate",
+            "dataType": "dateTime",
+            "sourceColumn": "InsertDate",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "InsertDate",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "UpdateDate",
+            "dataType": "dateTime",
+            "sourceColumn": "UpdateDate",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "UpdateDate",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "CustLedgerEntry21",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "silver"
             }
           }
         ],

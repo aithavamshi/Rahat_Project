@@ -1,0 +1,33 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "5cfb4e06-2459-9424-4818-0d22e301349d",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "run_id": {
+              "value": "@pipeline().RunId",
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Notebook1",
+        "dependsOn": []
+      }
+    ],
+    "parameters": {
+      "run_id": {
+        "type": "string",
+        "defaultValue": "@pipeline().RunId"
+      }
+    }
+  }
+}
