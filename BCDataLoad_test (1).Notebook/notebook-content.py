@@ -317,11 +317,13 @@ print(run_id)
 # MAGIC from pyspark.sql.functions import col, desc, row_number, lit, current_timestamp
 # MAGIC from pyspark.sql.window import Window
 # MAGIC from delta.tables import DeltaTable
+# MAGIC import uuid
 # MAGIC 
 # MAGIC # AUDIT HELPER FUNCTION
 # MAGIC # Writes one row to audit_log_table after each table processed
-# MAGIC 
+# MAGIC Run_ID = str(uuid.uuid4())
 # MAGIC def write_audit_log(
+# MAGIC     Run_ID,
 # MAGIC     table_name,
 # MAGIC     start_time,
 # MAGIC     end_time,
@@ -333,6 +335,7 @@ print(run_id)
 # MAGIC     error_message=""
 # MAGIC ):
 # MAGIC     audit_data = [(
+# MAGIC         Run_ID,
 # MAGIC         table_name,
 # MAGIC         start_time,
 # MAGIC         end_time,
@@ -345,6 +348,7 @@ print(run_id)
 # MAGIC     )]
 # MAGIC 
 # MAGIC     audit_schema = StructType([
+# MAGIC         StructField("Run_ID",      StringType(),    True),
 # MAGIC         StructField("TableName",      StringType(),    True),
 # MAGIC         StructField("StartTime",      TimestampType(), True),
 # MAGIC         StructField("EndTime",        TimestampType(), True),
@@ -362,6 +366,7 @@ print(run_id)
 # MAGIC     audit_df.write \
 # MAGIC         .mode("append") \
 # MAGIC         .format("delta") \
+# MAGIC         .option("mergeSchema", "true")\
 # MAGIC         .save("Tables/audit_log_table")
 # MAGIC 
 # MAGIC     print(f"Audit log written for: {table_name} | Status: {status}")
@@ -526,18 +531,6 @@ print(run_id)
 # MAGIC 
 # MAGIC                     print("Merge time:", time.time() - merge_start)
 # MAGIC 
-# MAGIC                    
-# MAGIC                     # CAPTURE MERGE METRICS
-# MAGIC                 
-# MAGIC                     #try:
-# MAGIC                         #inserted = merge_result["numTargetRowsInserted"]
-# MAGIC                         #updated  = merge_result["numTargetRowsUpdated"]
-# MAGIC                         #deleted  = merge_result["numTargetRowsDeleted"]
-# MAGIC                     #except:
-# MAGIC                         #inserted = df_new.count()
-# MAGIC                         #updated  = 0
-# MAGIC                         #deleted  = 0
-# MAGIC 
 # MAGIC                 else:
 # MAGIC                   
 # MAGIC                     # NEW TABLE — WRITE DIRECTLY
@@ -572,6 +565,7 @@ print(run_id)
 # MAGIC                 table_end_time = datetime.now()
 # MAGIC 
 # MAGIC                 write_audit_log(
+# MAGIC                     Run_ID         = Run_ID,
 # MAGIC                     table_name     = table_name,
 # MAGIC                     start_time     = table_start_time,
 # MAGIC                     end_time       = table_end_time,
