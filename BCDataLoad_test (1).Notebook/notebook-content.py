@@ -218,7 +218,7 @@ run_id = 'abc'
 # MAGIC         .mode("append") \
 # MAGIC         .format("delta") \
 # MAGIC         .option("mergeSchema", "true")\
-# MAGIC         .save("Tables/audit_log_table")
+# MAGIC         .save("Tables/audit_log_table_testing_sa")
 # MAGIC 
 # MAGIC     print(f"Audit log written for: {table_name} | Status: {status}")
 # MAGIC 
@@ -594,4 +594,23 @@ run_id = 'abc'
 # META   "language_group": "synapse_pyspark",
 # META   "frozen": true,
 # META   "editable": false
+# META }
+
+# MARKDOWN ********************
+
+# timestamp code
+
+# CELL ********************
+
+from datetime import datetime, timezone
+
+current_timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + 'Z'
+
+print(current_timestamp)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
 # META }

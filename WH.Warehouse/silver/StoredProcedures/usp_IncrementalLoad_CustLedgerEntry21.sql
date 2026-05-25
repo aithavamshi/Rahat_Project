@@ -1,12 +1,11 @@
----  Exec WH.dbo.usp_IncrementalLoad_CustLedgerEntry21
+---  Exec WH.silver.usp_IncrementalLoad_CustLedgerEntry21
 ---  Truncate table silver.CustLedgerEntry21
 ---  Select * from silver.CustLedgerEntry21
 
 
 
-CREATE         PROCEDURE silver.usp_IncrementalLoad_CustLedgerEntry21
-
-@RunId VARCHAR(100)
+CREATE     PROCEDURE silver.usp_IncrementalLoad_CustLedgerEntry21
+   @RunId VARCHAR(100) = 'RUN_Id'
 AS
 BEGIN
 
