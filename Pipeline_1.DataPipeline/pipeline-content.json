@@ -8,12 +8,16 @@
           "workspaceId": "00000000-0000-0000-0000-000000000000",
           "parameters": {
             "run_id": {
-              "value": "@pipeline().RunId",
+              "value": {
+                "value": "@pipeline().RunId",
+                "type": "Expression"
+              },
               "type": "string"
             }
           }
         },
         "policy": {
+          "timeout": "0.12:00:00",
           "retry": 0,
           "retryIntervalInSeconds": 30,
           "secureInput": false,
@@ -21,6 +25,253 @@
         },
         "name": "Notebook1",
         "dependsOn": []
+      },
+      {
+        "type": "SqlServerStoredProcedure",
+        "typeProperties": {
+          "storedProcedureName": "[silver].[usp_IncrementalLoad_CustLedgerEntry21]",
+          "storedProcedureParameters": {
+            "RunId": {
+              "value": {
+                "value": "@pipeline().RunId",
+                "type": "Expression"
+              },
+              "type": "String"
+            }
+          }
+        },
+        "linkedService": {
+          "name": "WH",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "624dad9f-1425-ad5f-4944-4a7224c5eef3",
+              "endpoint": "a2cuqgr5ukpeppo5hafacatsom-iw63sztjfd6ehpfa2gb76mjah4.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "CustLedgerEntry21",
+        "dependsOn": [
+          {
+            "activity": "Notebook1",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SqlServerStoredProcedure",
+        "typeProperties": {
+          "storedProcedureName": "[silver].[usp_IncrementalLoad_GLAccount15]",
+          "storedProcedureParameters": {
+            "RunId": {
+              "value": {
+                "value": "@pipeline().RunId",
+                "type": "Expression"
+              },
+              "type": "String"
+            }
+          }
+        },
+        "linkedService": {
+          "name": "WH",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "624dad9f-1425-ad5f-4944-4a7224c5eef3",
+              "endpoint": "a2cuqgr5ukpeppo5hafacatsom-iw63sztjfd6ehpfa2gb76mjah4.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "GLAccount15",
+        "dependsOn": [
+          {
+            "activity": "Notebook1",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SqlServerStoredProcedure",
+        "typeProperties": {
+          "storedProcedureName": "[silver].[usp_IncrementalLoad_GLEntry17]",
+          "storedProcedureParameters": {
+            "RunId": {
+              "value": "@pipeline().RunId",
+              "type": "String"
+            }
+          }
+        },
+        "linkedService": {
+          "name": "WH",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "624dad9f-1425-ad5f-4944-4a7224c5eef3",
+              "endpoint": "a2cuqgr5ukpeppo5hafacatsom-iw63sztjfd6ehpfa2gb76mjah4.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "GLEntry17",
+        "description": "",
+        "dependsOn": [
+          {
+            "activity": "Notebook1",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SqlServerStoredProcedure",
+        "typeProperties": {
+          "storedProcedureName": "[silver].[usp_IncrementalLoad_GLRegister45]",
+          "storedProcedureParameters": {
+            "RunId": {
+              "value": "@pipeline().RunId",
+              "type": "String"
+            }
+          }
+        },
+        "linkedService": {
+          "name": "WH",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "624dad9f-1425-ad5f-4944-4a7224c5eef3",
+              "endpoint": "a2cuqgr5ukpeppo5hafacatsom-iw63sztjfd6ehpfa2gb76mjah4.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "GLRegister45",
+        "dependsOn": [
+          {
+            "activity": "Notebook1",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SqlServerStoredProcedure",
+        "typeProperties": {
+          "storedProcedureName": "[silver].[usp_IncrementalLoad_Item27]",
+          "storedProcedureParameters": {
+            "RunId": {
+              "value": "@pipeline().RunId",
+              "type": "String"
+            }
+          }
+        },
+        "linkedService": {
+          "name": "WH",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "624dad9f-1425-ad5f-4944-4a7224c5eef3",
+              "endpoint": "a2cuqgr5ukpeppo5hafacatsom-iw63sztjfd6ehpfa2gb76mjah4.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Item27",
+        "dependsOn": [
+          {
+            "activity": "Notebook1",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SqlServerStoredProcedure",
+        "typeProperties": {
+          "storedProcedureName": "[silver].[usp_IncrementalLoad_SalesInvoiceHeader112]",
+          "storedProcedureParameters": {
+            "RunId": {
+              "value": "@pipeline().RunId",
+              "type": "String"
+            }
+          }
+        },
+        "linkedService": {
+          "name": "WH",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "624dad9f-1425-ad5f-4944-4a7224c5eef3",
+              "endpoint": "a2cuqgr5ukpeppo5hafacatsom-iw63sztjfd6ehpfa2gb76mjah4.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "SalesInvoiceHeader112",
+        "dependsOn": [
+          {
+            "activity": "Notebook1",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
       }
     ],
     "parameters": {

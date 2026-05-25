@@ -1,17 +1,19 @@
----  Exec usp_IncrementalLoad_CustLedgerEntry21
+---  Exec WH.dbo.usp_IncrementalLoad_CustLedgerEntry21
 ---  Truncate table silver.CustLedgerEntry21
 ---  Select * from silver.CustLedgerEntry21
 
 
 
-CREATE   PROCEDURE usp_IncrementalLoad_CustLedgerEntry21
+CREATE         PROCEDURE silver.usp_IncrementalLoad_CustLedgerEntry21
+
+@RunId VARCHAR(100)
 AS
 BEGIN
 
     ---------------------------------------------------
     -- AUDIT VARIABLES
     ---------------------------------------------------
-    DECLARE @RunId VARCHAR(100);
+    --DECLARE @RunId VARCHAR(100);
     DECLARE @StartTime DATETIME = GETDATE();
     DECLARE @EndTime DATETIME;
 
@@ -24,8 +26,8 @@ BEGIN
 
     --DECLARE @FilesProcessed INT = 0;
 
-    SET @RunId =
-    'RUN_' + FORMAT(GETDATE(),'yyyyMMdd_HHmmss');
+    --SET @RunId =
+    --'RUN_' + FORMAT(GETDATE(),'yyyyMMdd_HHmmss');
 
     BEGIN TRY
 
@@ -185,7 +187,7 @@ BEGIN
     ---------------------------------------------------
     SET @EndTime = GETDATE();
 
-    INSERT INTO [WH].[dbo].[silver_audit_log]
+    INSERT INTO [WH].[silver].[silver_audit_log]
     (
         RunId,
         TableName,

@@ -8,12 +8,12 @@
 # META   },
 # META   "dependencies": {
 # META     "lakehouse": {
-# META       "default_lakehouse": "58c6c192-2c0c-4ef9-8683-beb7311e0983",
+# META       "default_lakehouse": "4ecd799b-0967-4756-a550-39acb9ae87cd",
 # META       "default_lakehouse_name": "test_lh",
-# META       "default_lakehouse_workspace_id": "f6a7e8bf-6fb8-46fb-bc50-09b1cb575eb7",
+# META       "default_lakehouse_workspace_id": "66b9bd45-2869-43fc-bca0-d183ff31203f",
 # META       "known_lakehouses": [
 # META         {
-# META           "id": "58c6c192-2c0c-4ef9-8683-beb7311e0983"
+# META           "id": "4ecd799b-0967-4756-a550-39acb9ae87cd"
 # META         }
 # META       ]
 # META     }
@@ -30,12 +30,24 @@
 # 
 # Please change the parameters in the first part.
 
+# PARAMETERS CELL ********************
+
+run_id = 'abc'
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # CELL ********************
 
 # MAGIC %%pyspark
 # MAGIC #imports
 # MAGIC import time
 # MAGIC from pyspark.sql import SparkSession
+# MAGIC from notebookutils import mssparkutils
 # MAGIC spark = SparkSession.builder.getOrCreate()
 # MAGIC # settings
 # MAGIC spark.conf.set("sprk.sql.parquet.vorder.enabled","true")
@@ -60,19 +72,7 @@
 # MAGIC no_Partition = 258 #how many partition is used in the dataframe, a good starting point might be 2-4 partitions per CPU core in your Spark cluster
 # MAGIC DecimalFormat = 'float' #how to format the decimal numbers, can be 'float' or 'decimal(10,3)'. If you change this it will be a breaking change for the table
 # MAGIC DateTimeFormat = 'timestamp' #how to format the datetime, can be 'timestamp' or 'date'. If you change this it will be a breaking change for the table
-# MAGIC run_id = ""
 
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-print(run_id)
 
 # METADATA ********************
 
@@ -87,7 +87,7 @@ print(run_id)
 # MAGIC import os # Used to read files from folder
 # MAGIC import json
 # MAGIC from pyspark.sql.types import * # Used for defining data types (not used much here directly)
-# MAGIC print("code started")
+# MAGIC 
 # MAGIC if Drop_table_if_mismatch:
 # MAGIC 
 # MAGIC     def count_keys(obj):  
@@ -96,7 +96,7 @@ print(run_id)
 # MAGIC         if isinstance(obj, list):  
 # MAGIC             return sum(count_keys(v) for v in obj)  
 # MAGIC         return 0  
-# MAGIC     print("getting lisdtdir")
+# MAGIC     
 # MAGIC     for filename in os.listdir(folder_path_json):
 # MAGIC         if "manifest" not in filename: # exclude the manifest files
 # MAGIC             if filename.endswith(".cdm.json"):
@@ -154,154 +154,6 @@ print(run_id)
 
 # MARKDOWN ********************
 
-# ****Original Code****
-
-# CELL ********************
-
-# MAGIC %%pyspark
-# MAGIC import json
-# MAGIC import os
-# MAGIC import glob
-# MAGIC from pyspark.sql.types import *
-# MAGIC from pyspark.sql.utils import AnalysisException
-# MAGIC from pyspark.sql.functions import col
-# MAGIC from pyspark.sql.functions import desc
-# MAGIC file_list = []
-# MAGIC print("3rd cell is started")
-# MAGIC for entry in os.scandir(folder_path):
-# MAGIC  if entry.is_dir():
-# MAGIC 
-# MAGIC     for filename in glob.glob(folder_path + entry.name + '/*'):     
-# MAGIC         table_name = entry.name.replace("-","")
-# MAGIC         ContainsCompany = False
-# MAGIC         df_new = spark.read.option("minPartitions", no_Partition).format("csv").option("header","true").load(folder_path_spark + entry.name +"/*")   
-# MAGIC         file_list.append(filename) #collect the imported filed in a list for deletion later on
-# MAGIC         
-# MAGIC         print("getting column names from json ")
-# MAGIC         f = open(folder_path_json + entry.name +".cdm.json")
-# MAGIC         schema = json.load(f)
-# MAGIC         # Parse the schema to get column names and data types
-# MAGIC         column_names = [attr["name"] for attr in schema["definitions"][0]["hasAttributes"]] 
-# MAGIC         if '$Company' in column_names:
-# MAGIC             ContainsCompany = True
-# MAGIC         column_types = [attr['dataFormat'] for attr in schema["definitions"][0]["hasAttributes"]]   
-# MAGIC         for col_name, col_type in zip(column_names, column_types):
-# MAGIC             if col_type == "String":
-# MAGIC                 col_type = "string"
-# MAGIC             if col_type == "Guid":
-# MAGIC                 col_type = "string"
-# MAGIC             if col_type == "Code":
-# MAGIC                 col_type = "object"
-# MAGIC             if col_type == "Option":
-# MAGIC                 col_type = "string"
-# MAGIC             if col_type == "Date":
-# MAGIC                 col_type = "date"
-# MAGIC             if col_type == "Time":
-# MAGIC                 col_type = "string"
-# MAGIC             if col_type == "DateTime":
-# MAGIC                 col_type = DateTimeFormat
-# MAGIC             if col_type == "Duration":
-# MAGIC                 col_type = "timedelta"
-# MAGIC             if col_type == "Decimal":
-# MAGIC                 col_type = DecimalFormat
-# MAGIC             if col_type == "Boolean":
-# MAGIC                 col_type = "boolean"
-# MAGIC             if col_type == "Integer":
-# MAGIC                 col_type = "int"
-# MAGIC             if col_type == "Int64":
-# MAGIC                 col_type = "int"
-# MAGIC             if col_type == "Int32":
-# MAGIC                 col_type = "int"
-# MAGIC             if col_name == 'SystemModifiedAt-2000000003': #Audit fields must be in timestamp
-# MAGIC                 col_type = "timestamp"
-# MAGIC             if col_name == 'SystemModifiedBy-2000000004': 
-# MAGIC                 col_type = "timestamp"
-# MAGIC 
-# MAGIC             df_new = df_new.withColumn(col_name, df_new[col_name].cast(col_type))
-# MAGIC 
-# MAGIC         print("check if the table exists")
-# MAGIC         print("Processing table:", table_name)
-# MAGIC         #print("Existing tables:", [t.name for t in spark.catalog.listTables()])
-# MAGIC         existing_tables = [t.name.lower() for t in spark.catalog.listTables()]
-# MAGIC         #check if the table exists
-# MAGIC         #if table_name.lower() in [t.name.lower() for t in spark.catalog.listTables()]:
-# MAGIC         if table_name.lower() in existing_tables:  
-# MAGIC             #read the old data into a new dataframe and union with the new dataframe
-# MAGIC             SQL_Query = "SELECT * FROM " + Lakehouse +".dbo."+table_name;  
-# MAGIC             #print(SQL_Query)
-# MAGIC             df_old = spark.sql(SQL_Query)
-# MAGIC             df_new = df_new.union(df_old).repartition(no_Partition)
-# MAGIC             
-# MAGIC             print("Delete old records by filter and with left anti")
-# MAGIC             #delete all old records
-# MAGIC             start = time.time()
-# MAGIC             df_deletes = df_new.filter(df_new['SystemCreatedAt-2000000001'].isNull())
-# MAGIC             df_deletes.count()   # FORCE EXECUTION
-# MAGIC             print("delete filter By Time:", time.time() - start, "seconds")
-# MAGIC 
-# MAGIC             start = time.time()
-# MAGIC             if ContainsCompany:
-# MAGIC                 df_new = df_new.join(df_deletes, ['$Company','systemId-2000000000'], 'leftanti')
-# MAGIC                 df_new.count()
-# MAGIC                 print("deleting By Time:", time.time() - start, "seconds")
-# MAGIC             else:
-# MAGIC                 df_new = df_new.join(df_deletes, ['systemId-2000000000'], 'leftanti')
-# MAGIC             
-# MAGIC             print("remove duplicates by filtering on systemID and systemModifiedAt fields")
-# MAGIC             
-# MAGIC             # remove duplicates by filtering on systemID and systemModifiedAt fields
-# MAGIC             if ContainsCompany:
-# MAGIC                 start = time.time()
-# MAGIC                 df_new = df_new.orderBy('$Company','systemId-2000000000',desc('SystemModifiedAt-2000000003'))
-# MAGIC                 print("Order By Time:", time.time() - start, "seconds")
-# MAGIC                 start = time.time()
-# MAGIC                 df_new = df_new.dropDuplicates(['$Company','systemId-2000000000'])
-# MAGIC                 print("Drop duplicates By Time:", time.time() - start, "seconds")
-# MAGIC 
-# MAGIC             else:
-# MAGIC                 start = time.time()
-# MAGIC                 df_new = df_new.orderBy('systemId-2000000000',desc('SystemModifiedAt-2000000003'))
-# MAGIC                 df_new.count()
-# MAGIC                 print("OrderBy time:", time.time() - start)
-# MAGIC                 df_new = df_new.dropDuplicates(['systemId-2000000000'])
-# MAGIC             
-# MAGIC             #overwrite the dataframe in the new table
-# MAGIC             #df_new.write.mode("overwrite").format("delta").save("Tables/" + table_name)
-# MAGIC             #df_new.write.mode("overwrite").format("delta").saveAsTable(f"{Lakehouse}.dbo.{table_name}") 
-# MAGIC             start = time.time()
-# MAGIC             df_new.write.mode("overwrite").format("delta").saveAsTable(table_name) 
-# MAGIC             print("Write time:", time.time() - start)
-# MAGIC             print("else executing")
-# MAGIC         else:  
-# MAGIC             #table isn't there so just insert it
-# MAGIC             #df_new.write.mode("overwrite").format("delta").save("Tables/" + table_name)
-# MAGIC             #df_new.write.mode("overwrite").format("delta").saveAsTable(f"{Lakehouse}.dbo.{table_name}") 
-# MAGIC             print("else started")
-# MAGIC             start = time.time()
-# MAGIC             df_new.write.mode("overwrite").format("delta").saveAsTable(table_name) 
-# MAGIC             print("Write time:", time.time() - start)
-# MAGIC 
-# MAGIC 
-# MAGIC         #delete the files
-# MAGIC         #if Remove_delta:
-# MAGIC             #for filename in file_list:  
-# MAGIC             #    try:  
-# MAGIC             #        os.remove(filename)  
-# MAGIC             #    except OSError as e:  # this would catch any error when trying to delete the file  
-# MAGIC             #        print(f"Error: {filename} : {e.strerror}")
-# MAGIC             #file_list = [] # clear the list */
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark",
-# META   "frozen": true,
-# META   "editable": false
-# META }
-
-# MARKDOWN ********************
-
 # **Audit Table Working Code**
 
 # CELL ********************
@@ -317,13 +169,11 @@ print(run_id)
 # MAGIC from pyspark.sql.functions import col, desc, row_number, lit, current_timestamp
 # MAGIC from pyspark.sql.window import Window
 # MAGIC from delta.tables import DeltaTable
-# MAGIC import uuid
 # MAGIC 
-# MAGIC # AUDIT HELPER FUNCTION
-# MAGIC # Writes one row to audit_log_table after each table processed
-# MAGIC Run_ID = str(uuid.uuid4())
+# MAGIC 
 # MAGIC def write_audit_log(
-# MAGIC     Run_ID,
+# MAGIC 
+# MAGIC     run_id,
 # MAGIC     table_name,
 # MAGIC     start_time,
 # MAGIC     end_time,
@@ -335,7 +185,8 @@ print(run_id)
 # MAGIC     error_message=""
 # MAGIC ):
 # MAGIC     audit_data = [(
-# MAGIC         Run_ID,
+# MAGIC 
+# MAGIC         run_id,
 # MAGIC         table_name,
 # MAGIC         start_time,
 # MAGIC         end_time,
@@ -376,7 +227,7 @@ print(run_id)
 # MAGIC # MAIN PROCESSING LOOP
 # MAGIC 
 # MAGIC file_list = []
-# MAGIC print("3rd cell is started")
+# MAGIC 
 # MAGIC 
 # MAGIC for entry in os.scandir(folder_path):
 # MAGIC     if entry.is_dir():
@@ -433,7 +284,7 @@ print(run_id)
 # MAGIC                     if col_type == "Date":      col_type = "date"
 # MAGIC                     if col_type == "Time":      col_type = "string"
 # MAGIC                     if col_type == "DateTime":  col_type = DateTimeFormat
-# MAGIC                     if col_type == "Duration":  col_type = "string"
+# MAGIC                     if col_type == "Duration":  col_type = "timedelta"
 # MAGIC                     if col_type == "Decimal":   col_type = DecimalFormat
 # MAGIC                     if col_type == "Boolean":   col_type = "boolean"
 # MAGIC                     if col_type == "Integer":   col_type = "int"
@@ -565,7 +416,7 @@ print(run_id)
 # MAGIC                 table_end_time = datetime.now()
 # MAGIC 
 # MAGIC                 write_audit_log(
-# MAGIC                     Run_ID         = Run_ID,
+# MAGIC                     run_id         = run_id,
 # MAGIC                     table_name     = table_name,
 # MAGIC                     start_time     = table_start_time,
 # MAGIC                     end_time       = table_end_time,
@@ -594,32 +445,10 @@ print(run_id)
 
 # META {
 # META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-from pyspark.sql.functions import current_timestamp, date_format
-
-# Adding the formatted timestamp to your DataFrame
-df_formatted = df.withColumn("iso_timestamp", 
-    date_format(current_timestamp(), "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-)
-
-df_formatted.select("iso_timestamp").show(truncate=False)
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
 # META   "language_group": "synapse_pyspark",
-# META   "frozen": true,
-# META   "editable": false
+# META   "frozen": false,
+# META   "editable": true
 # META }
-
-# MARKDOWN ********************
-
-# **New Code**
 
 # CELL ********************
 
@@ -692,14 +521,11 @@ df_formatted.select("iso_timestamp").show(truncate=False)
 # MAGIC         print("check if the table exists")
 # MAGIC         print("Processing table:", table_name)
 # MAGIC         #print("Existing tables:", [t.name for t in spark.catalog.listTables()])
-# MAGIC         existing_tables = [t.name for t in spark.catalog.listTables()]#.lower()
-# MAGIC         #print("Existing tables:",existing_tables)
-# MAGIC         inserted = 0
-# MAGIC         updated = 0
-# MAGIC         deleted = 0
+# MAGIC         existing_tables = [t.name.lower() for t in spark.catalog.listTables()]#
+# MAGIC 
 # MAGIC         #check if the table exists
 # MAGIC         #if table_name.lower() in [t.name.lower() for t in spark.catalog.listTables()]:
-# MAGIC         if table_name in existing_tables:#.lower() 
+# MAGIC         if table_name.lower() in existing_tables:#
 # MAGIC 
 # MAGIC                 #print("Using MERGE Logic")
 # MAGIC                 #HANDLE DELETES FIRST
@@ -735,21 +561,13 @@ df_formatted.select("iso_timestamp").show(truncate=False)
 # MAGIC 
 # MAGIC                 start = time.time()
 # MAGIC 
-# MAGIC                 merge_result = delta_table.alias("old").merge(
+# MAGIC                 delta_table.alias("old").merge(
 # MAGIC                     df_new.alias("new"),
 # MAGIC                     "old.`systemId-2000000000` = new.`systemId-2000000000`"
 # MAGIC                 ).whenMatchedUpdateAll() \
 # MAGIC                  .whenNotMatchedInsertAll() \
 # MAGIC                  .execute()
-# MAGIC 
-# MAGIC                   # SAFE METRICS
-# MAGIC                 try:
-# MAGIC                     inserted = merge_result["numTargetRowsInserted"]
-# MAGIC                     updated  = merge_result["numTargetRowsUpdated"]
-# MAGIC                     deleted  = merge_result["numTargetRowsDeleted"]
-# MAGIC                 except:
-# MAGIC                     inserted = df_new.count() 
-# MAGIC 
+# MAGIC                 
 # MAGIC                 print("Merge time:", time.time() - start)
 # MAGIC 
 # MAGIC         else:
@@ -761,13 +579,13 @@ df_formatted.select("iso_timestamp").show(truncate=False)
 # MAGIC 
 # MAGIC 
 # MAGIC         #delete the files
-# MAGIC         #if Remove_delta:
-# MAGIC             #for filename in file_list:  
-# MAGIC             #    try:  
-# MAGIC             #        os.remove(filename)  
-# MAGIC             #    except OSError as e:  # this would catch any error when trying to delete the file  
-# MAGIC             #        print(f"Error: {filename} : {e.strerror}")
-# MAGIC             #file_list = [] # clear the list */
+# MAGIC         if Remove_delta:
+# MAGIC             for filename in file_list:  
+# MAGIC                 try:  
+# MAGIC                     os.remove(filename)  
+# MAGIC                 except OSError as e:  # this would catch any error when trying to delete the file  
+# MAGIC                     print(f"Error: {filename} : {e.strerror}")
+# MAGIC             file_list = [] # clear the list */
 
 # METADATA ********************
 
