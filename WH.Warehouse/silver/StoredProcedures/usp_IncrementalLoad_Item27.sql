@@ -1,9 +1,9 @@
 ---  Exec silver.usp_IncrementalLoad_Item27
----  select * from [dwh].[silver].[Item27]
+---  select * from [WH].[silver].[Item27]
 ---  TRUNCATE TABLE silver.Item27
 
 
-CREATE         PROCEDURE silver.usp_IncrementalLoad_Item27
+CREATE             PROCEDURE silver.usp_IncrementalLoad_Item27
 @RunId VARCHAR(100) = 'RunId'
 AS
 BEGIN
@@ -1138,7 +1138,7 @@ BEGIN
 	    FROM [WH].[silver].[Item27] t
 	    LEFT JOIN [test_lh].[dbo].[Item27] s
             ON t.[systemId-2000000000] = s.[systemId-2000000000]
-	    WHERE t.[systemId-2000000000] IS NULL;       
+	    WHERE s.[systemId-2000000000] IS NULL;       
             SET @Deleted = @@ROWCOUNT;
 
     END TRY
