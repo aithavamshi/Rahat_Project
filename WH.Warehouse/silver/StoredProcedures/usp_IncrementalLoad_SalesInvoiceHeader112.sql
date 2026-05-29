@@ -4,8 +4,8 @@
 
 
 
-CREATE       PROCEDURE silver.usp_IncrementalLoad_SalesInvoiceHeader112
-@RunId VARCHAR(100)
+CREATE                 PROCEDURE silver.usp_IncrementalLoad_SalesInvoiceHeader112
+@RunId VARCHAR(100) = 'RunId'
 AS
 BEGIN
 

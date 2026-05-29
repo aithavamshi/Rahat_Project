@@ -3,8 +3,8 @@
 ---  TRUNCATE TABLE silver.Item27
 
 
-CREATE           PROCEDURE silver.usp_IncrementalLoad_Item27
-@RunId VARCHAR(100)
+CREATE         PROCEDURE silver.usp_IncrementalLoad_Item27
+@RunId VARCHAR(100) = 'RunId'
 AS
 BEGIN
 

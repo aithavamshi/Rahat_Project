@@ -2,8 +2,8 @@
 ---  select * from silver.GLAccount15
 ---  TRUNCATE TABLE silver.GLAccount15
 
-CREATE       PROCEDURE silver.usp_IncrementalLoad_GLAccount15
-@RunId VARCHAR(100)
+CREATE     PROCEDURE silver.usp_IncrementalLoad_GLAccount15
+@RunId VARCHAR(100) = 'RunId'
 AS
 BEGIN
     ---------------------------------------------------

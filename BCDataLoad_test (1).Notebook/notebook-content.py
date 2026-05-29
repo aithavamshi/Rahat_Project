@@ -65,7 +65,7 @@ run_id = 'abc'
 # MAGIC folder_path = '/lakehouse/default/Files/deltas/' # this is mostly the default
 # MAGIC 
 # MAGIC # parameters
-# MAGIC workspace = 'f6a7e8bf-6fb8-46fb-bc50-09b1cb575eb7' #can also be a GUID
+# MAGIC workspace = '66b9bd45-2869-43fc-bca0-d183ff31203f' #can also be a GUID
 # MAGIC Lakehouse = 'test_lh'; #can also be a GUID
 # MAGIC Remove_delta = True; #will remove the delta files if everything is processed
 # MAGIC Drop_table_if_mismatch = True; #option to drop the table if json file has different columns then in the table
@@ -220,7 +220,7 @@ run_id = 'abc'
 # MAGIC         .option("mergeSchema", "true")\
 # MAGIC         .save("Tables/audit_log_table_testing_sa")
 # MAGIC 
-# MAGIC     print(f"Audit log written for: {table_name} | Status: {status}")
+# MAGIC     #print(f"Audit log written for: {table_name} | Status: {status}")
 # MAGIC 
 # MAGIC 
 # MAGIC 
@@ -263,7 +263,7 @@ run_id = 'abc'
 # MAGIC          
 # MAGIC                 # READ JSON SCHEMA
 # MAGIC               
-# MAGIC                 print("Getting column names from json")
+# MAGIC                 #print("Getting column names from json")
 # MAGIC                 f = open(folder_path_json + entry.name + ".cdm.json")
 # MAGIC                 schema = json.load(f)
 # MAGIC 
@@ -300,7 +300,7 @@ run_id = 'abc'
 # MAGIC            
 # MAGIC                 # CHECK IF TABLE EXISTS
 # MAGIC             
-# MAGIC                 print("Processing table:", table_name)
+# MAGIC                 #print("Processing table:", table_name)
 # MAGIC                 existing_tables = [t.name for t in spark.catalog.listTables()]
 # MAGIC 
 # MAGIC                 if table_name in existing_tables:
@@ -380,7 +380,7 @@ run_id = 'abc'
 # MAGIC                      .whenNotMatchedInsertAll() \
 # MAGIC                      .execute()
 # MAGIC 
-# MAGIC                     print("Merge time:", time.time() - merge_start)
+# MAGIC                     #print("Merge time:", time.time() - merge_start)
 # MAGIC 
 # MAGIC                 else:
 # MAGIC                   
@@ -394,7 +394,7 @@ run_id = 'abc'
 # MAGIC                         .format("delta") \
 # MAGIC                         .save("Tables/" + table_name)
 # MAGIC 
-# MAGIC                     print("Write time:", time.time() - write_start)
+# MAGIC                     #print("Write time:", time.time() - write_start)
 # MAGIC 
 # MAGIC                     # For new table all rows are inserts
 # MAGIC                     inserted = df_new.count()
@@ -450,152 +450,6 @@ run_id = 'abc'
 # META   "editable": true
 # META }
 
-# CELL ********************
-
-# MAGIC %%pyspark
-# MAGIC import json
-# MAGIC import os
-# MAGIC import glob
-# MAGIC from pyspark.sql.types import *
-# MAGIC from pyspark.sql.utils import AnalysisException
-# MAGIC from pyspark.sql.functions import col
-# MAGIC from pyspark.sql.functions import desc
-# MAGIC from pyspark.sql.window import Window
-# MAGIC from pyspark.sql.functions import row_number
-# MAGIC from delta.tables import DeltaTable
-# MAGIC 
-# MAGIC 
-# MAGIC file_list = []
-# MAGIC print("3rd cell is started")
-# MAGIC for entry in os.scandir(folder_path):
-# MAGIC  if entry.is_dir():
-# MAGIC 
-# MAGIC     for filename in glob.glob(folder_path + entry.name + '/*'):     
-# MAGIC         table_name = entry.name.replace("-","")
-# MAGIC         ContainsCompany = False
-# MAGIC         df_new = spark.read.option("minPartitions", no_Partition).format("csv").option("header","true").load(folder_path_spark + entry.name +"/*")   
-# MAGIC         file_list.append(filename) #collect the imported filed in a list for deletion later on
-# MAGIC         
-# MAGIC         print("getting column names from json ")
-# MAGIC         f = open(folder_path_json + entry.name +".cdm.json")
-# MAGIC         schema = json.load(f)
-# MAGIC         # Parse the schema to get column names and data types
-# MAGIC         column_names = [attr["name"] for attr in schema["definitions"][0]["hasAttributes"]] 
-# MAGIC         if '$Company' in column_names:
-# MAGIC             ContainsCompany = True
-# MAGIC         column_types = [attr['dataFormat'] for attr in schema["definitions"][0]["hasAttributes"]]   
-# MAGIC         for col_name, col_type in zip(column_names, column_types):
-# MAGIC             if col_type == "String":
-# MAGIC                 col_type = "string"
-# MAGIC             if col_type == "Guid":
-# MAGIC                 col_type = "string"
-# MAGIC             if col_type == "Code":
-# MAGIC                 col_type = "object"
-# MAGIC             if col_type == "Option":
-# MAGIC                 col_type = "string"
-# MAGIC             if col_type == "Date":
-# MAGIC                 col_type = "date"
-# MAGIC             if col_type == "Time":
-# MAGIC                 col_type = "string"
-# MAGIC             if col_type == "DateTime":
-# MAGIC                 col_type = DateTimeFormat
-# MAGIC             if col_type == "Duration":
-# MAGIC                 col_type = "timedelta"
-# MAGIC             if col_type == "Decimal":
-# MAGIC                 col_type = DecimalFormat
-# MAGIC             if col_type == "Boolean":
-# MAGIC                 col_type = "boolean"
-# MAGIC             if col_type == "Integer":
-# MAGIC                 col_type = "int"
-# MAGIC             if col_type == "Int64":
-# MAGIC                 col_type = "int"
-# MAGIC             if col_type == "Int32":
-# MAGIC                 col_type = "int"
-# MAGIC             if col_name == 'SystemModifiedAt-2000000003': #Audit fields must be in timestamp
-# MAGIC                 col_type = "timestamp"
-# MAGIC             if col_name == 'SystemModifiedBy-2000000004': 
-# MAGIC                 col_type = "timestamp"
-# MAGIC 
-# MAGIC             df_new = df_new.withColumn(col_name, df_new[col_name].cast(col_type))
-# MAGIC 
-# MAGIC         print("check if the table exists")
-# MAGIC         print("Processing table:", table_name)
-# MAGIC         #print("Existing tables:", [t.name for t in spark.catalog.listTables()])
-# MAGIC         existing_tables = [t.name.lower() for t in spark.catalog.listTables()]#
-# MAGIC 
-# MAGIC         #check if the table exists
-# MAGIC         #if table_name.lower() in [t.name.lower() for t in spark.catalog.listTables()]:
-# MAGIC         if table_name.lower() in existing_tables:#
-# MAGIC 
-# MAGIC                 #print("Using MERGE Logic")
-# MAGIC                 #HANDLE DELETES FIRST
-# MAGIC                 df_deletes = df_new.filter(col("SystemCreatedAt-2000000001").isNull())
-# MAGIC                 #print(df_deletes,"df_deletes")
-# MAGIC                 #display(df_deletes)
-# MAGIC                 if df_deletes.count() > 0:
-# MAGIC                     print("Deleting records from target...")
-# MAGIC 
-# MAGIC                     delta_table = DeltaTable.forName(spark, table_name)
-# MAGIC 
-# MAGIC                     delta_table.alias("old").merge(
-# MAGIC                     df_deletes.alias("del"),
-# MAGIC                     "old.`systemId-2000000000` = del.`systemId-2000000000`"
-# MAGIC                     ).whenMatchedDelete().execute()
-# MAGIC 
-# MAGIC                 #Filter invalid records (instead of left anti join)
-# MAGIC                 df_new = df_new.filter(col("SystemCreatedAt-2000000001").isNotNull())
-# MAGIC                 #display(df_new) # look for few row 10 or 20
-# MAGIC 
-# MAGIC                 #Drop duplicates
-# MAGIC                 if ContainsCompany:
-# MAGIC                     window_spec = Window.partitionBy("systemId-2000000000").orderBy(desc("SystemModifiedAt-2000000003"))
-# MAGIC                     df_new = df_new.withColumn("rn", row_number().over(window_spec)).filter(col("rn") == 1).drop("rn")
-# MAGIC                     #df_new = df_new.dropDuplicates(['$Company','systemId-2000000000'])
-# MAGIC                 else:
-# MAGIC                     window_spec = Window.partitionBy('systemId-2000000000').orderBy(desc('SystemModifiedAt-2000000003'))
-# MAGIC                     df_new = df_new.withColumn("rn", row_number().over(window_spec)).filter(col("rn") == 1).drop("rn")
-# MAGIC                     #df_new = df_new.dropDuplicates(['systemId-2000000000'])
-# MAGIC 
-# MAGIC                 #MERGE (MAIN OPTIMIZATION)
-# MAGIC                 delta_table = DeltaTable.forName(spark, table_name)
-# MAGIC 
-# MAGIC                 start = time.time()
-# MAGIC 
-# MAGIC                 delta_table.alias("old").merge(
-# MAGIC                     df_new.alias("new"),
-# MAGIC                     "old.`systemId-2000000000` = new.`systemId-2000000000`"
-# MAGIC                 ).whenMatchedUpdateAll() \
-# MAGIC                  .whenNotMatchedInsertAll() \
-# MAGIC                  .execute()
-# MAGIC                 
-# MAGIC                 print("Merge time:", time.time() - start)
-# MAGIC 
-# MAGIC         else:
-# MAGIC          print("New table - writing directly")
-# MAGIC          start = time.time()
-# MAGIC          df_new.write.mode("overwrite").format("delta").save("Tables/" + table_name)
-# MAGIC          #df_new.write.mode("overwrite").format("delta").saveAsTable(table_name)
-# MAGIC          print("Write time:", time.time() - start)
-# MAGIC 
-# MAGIC 
-# MAGIC         #delete the files
-# MAGIC         if Remove_delta:
-# MAGIC             for filename in file_list:  
-# MAGIC                 try:  
-# MAGIC                     os.remove(filename)  
-# MAGIC                 except OSError as e:  # this would catch any error when trying to delete the file  
-# MAGIC                     print(f"Error: {filename} : {e.strerror}")
-# MAGIC             file_list = [] # clear the list */
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark",
-# META   "frozen": true,
-# META   "editable": false
-# META }
-
 # MARKDOWN ********************
 
 # timestamp code
@@ -612,5 +466,7 @@ print(current_timestamp)
 
 # META {
 # META   "language": "python",
-# META   "language_group": "synapse_pyspark"
+# META   "language_group": "synapse_pyspark",
+# META   "frozen": false,
+# META   "editable": true
 # META }

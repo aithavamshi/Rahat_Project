@@ -1,8 +1,8 @@
----  Exec silver.usp_IncrementalLoad_GLRegister45
----  select * from [dwh].[silver].[GLRegister45]
----  truncate table [dwh].[silver].[GLRegister45]
+---  Exec silver.usp_IncrementalLoad_CountryRegion9
+---  select * from silver.CountryRegion9
+---  Truncate table silver.CountryRegion9
 
-CREATE       PROCEDURE silver.usp_IncrementalLoad_GLRegister45
+CREATE     PROCEDURE silver.usp_IncrementalLoad_CountryRegion9
 @RunId VARCHAR(100) = 'RunId'
 AS
 BEGIN
@@ -31,107 +31,95 @@ BEGIN
         ---------------------------------------------------
         -- STEP 1: INSERT NEW RECORDS
         ---------------------------------------------------
-        
-
-        INSERT INTO silver.GLRegister45 (
-            [JournalBatchName-7],
-            [JournalTemplName-12],
-            [SourceCode-5],
+        INSERT INTO silver.CountryRegion9 (
+            [VATScheme-10],
+            [CountyName-12],
+            [ISONumericCode-5],
+            [ISOCode-4],
             [$Company],
             [$DeliveredDateTime],
-            [CreationDate-4],
-            [CreationTime-11],
-            [FromEntryNo-2],
-            [FromVATEntryNo-8],
-            [No-1],
-            [Reversed-10],
+            [AddressFormat-8],
+            [Code-1],
+            [ContactAddressFormat-9],
+            [LastModifiedDateTime-11],
+            [Name-2],
             [SystemCreatedAt-2000000001],
             [SystemCreatedBy-2000000002],
             [SystemModifiedAt-2000000003],
-            [ToEntryNo-3],
-            [ToVATEntryNo-9],
-            [UserID-6],
+            [WTIAAllocate-90100],
             [systemId-2000000000],
             [timestamp-0],
-            InsertDate,
-            UpdateDate
+            InsertDate
         )
         SELECT
-            s.[JournalBatchName-7],
-            s.[JournalTemplName-12],
-            s.[SourceCode-5],
+            s.[VATScheme-10],
+            s.[CountyName-12],
+            s.[ISONumericCode-5],
+            s.[ISOCode-4],
             s.[$Company],
             TRY_CONVERT(DATETIME2(3), NULLIF(s.[$DeliveredDateTime], '')),
-            TRY_CONVERT(DATE, NULLIF(s.[CreationDate-4], '')),
-            s.[CreationTime-11],
-            s.[FromEntryNo-2],
-            s.[FromVATEntryNo-8],
-            s.[No-1],
-            s.[Reversed-10],
+            s.[AddressFormat-8],
+            s.[Code-1],
+            s.[ContactAddressFormat-9],
+            TRY_CONVERT(DATETIME2(3), NULLIF(s.[LastModifiedDateTime-11], '')),
+            s.[Name-2],
             TRY_CONVERT(DATETIME2(3), NULLIF(s.[SystemCreatedAt-2000000001], '')),
             s.[SystemCreatedBy-2000000002],
             TRY_CONVERT(DATETIME2(3), NULLIF(s.[SystemModifiedAt-2000000003], '')),
-            s.[ToEntryNo-3],
-            s.[ToVATEntryNo-9],
-            s.[UserID-6],
+            s.[WTIAAllocate-90100],
             s.[systemId-2000000000],
             s.[timestamp-0],
-            CURRENT_TIMESTAMP,
-            NULL
-        FROM [test_lh].[dbo].[GLRegister45] s
-        LEFT JOIN silver.GLRegister45 t 
+            CURRENT_TIMESTAMP
+        FROM [test_lh].[dbo].[CountryRegion9] s
+        LEFT JOIN silver.CountryRegion9 t
             ON s.[systemId-2000000000] = t.[systemId-2000000000]
         WHERE t.[systemId-2000000000] IS NULL
           AND s.[systemId-2000000000] IS NOT NULL;
-		  
-        SET @Inserted = @@ROWCOUNT;
+            
 
+        SET @Inserted = @@ROWCOUNT;
 
         ---------------------------------------------------
         -- STEP 2: UPDATE CHANGED RECORDS
         ---------------------------------------------------
         UPDATE t
         SET
-            t.[JournalBatchName-7] = s.[JournalBatchName-7],
-            t.[JournalTemplName-12] = s.[JournalTemplName-12],
-            t.[SourceCode-5] = s.[SourceCode-5],
+            t.[VATScheme-10] = s.[VATScheme-10],
+            t.[CountyName-12] = s.[CountyName-12],
+            t.[ISONumericCode-5] = s.[ISONumericCode-5],
+            t.[ISOCode-4] = s.[ISOCode-4],
             t.[$Company] = s.[$Company],
             t.[$DeliveredDateTime] = TRY_CONVERT(DATETIME2(3), NULLIF(s.[$DeliveredDateTime], '')),
-            t.[CreationDate-4] = TRY_CONVERT(DATE, NULLIF(s.[CreationDate-4], '')),
-            t.[CreationTime-11] = s.[CreationTime-11],
-            t.[FromEntryNo-2] = s.[FromEntryNo-2],
-            t.[FromVATEntryNo-8] = s.[FromVATEntryNo-8],
-            t.[No-1] = s.[No-1],
-            t.[Reversed-10] = s.[Reversed-10],
+            t.[AddressFormat-8] = s.[AddressFormat-8],
+            t.[Code-1] = s.[Code-1],
+            t.[ContactAddressFormat-9] = s.[ContactAddressFormat-9],
+            t.[LastModifiedDateTime-11] = TRY_CONVERT(DATETIME2(3), NULLIF(s.[LastModifiedDateTime-11], '')),
+            t.[Name-2] = s.[Name-2],
             t.[SystemCreatedAt-2000000001] = TRY_CONVERT(DATETIME2(3), NULLIF(s.[SystemCreatedAt-2000000001], '')),
             t.[SystemCreatedBy-2000000002] = s.[SystemCreatedBy-2000000002],
             t.[SystemModifiedAt-2000000003] = TRY_CONVERT(DATETIME2(3), NULLIF(s.[SystemModifiedAt-2000000003], '')),
-            t.[ToEntryNo-3] = s.[ToEntryNo-3],
-            t.[ToVATEntryNo-9] = s.[ToVATEntryNo-9],
-            t.[UserID-6] = s.[UserID-6],
+            t.[WTIAAllocate-90100] = s.[WTIAAllocate-90100],
             t.[timestamp-0] = s.[timestamp-0],
-            t.UpdateDate = CURRENT_TIMESTAMP
-        FROM silver.GLRegister45 t
-        JOIN [test_lh].[dbo].[GLRegister45] s
+            UpdateDate = CURRENT_TIMESTAMP
+        FROM silver.CountryRegion9 t
+        JOIN [test_lh].[dbo].[CountryRegion9] s
             ON t.[systemId-2000000000] = s.[systemId-2000000000]
         WHERE
-            ISNULL(t.[JournalBatchName-7], '') <> ISNULL(s.[JournalBatchName-7], '') OR
-            ISNULL(t.[JournalTemplName-12], '') <> ISNULL(s.[JournalTemplName-12], '') OR
-            ISNULL(t.[SourceCode-5], '') <> ISNULL(s.[SourceCode-5], '') OR
+            ISNULL(t.[VATScheme-10], '') <> ISNULL(s.[VATScheme-10], '') OR
+            ISNULL(t.[CountyName-12], '') <> ISNULL(s.[CountyName-12], '') OR
+            ISNULL(t.[ISONumericCode-5], '') <> ISNULL(s.[ISONumericCode-5], '') OR
+            ISNULL(t.[ISOCode-4], '') <> ISNULL(s.[ISOCode-4], '') OR
             ISNULL(t.[$Company], '') <> ISNULL(s.[$Company], '') OR
             ISNULL(t.[$DeliveredDateTime], '1900-01-01') <> ISNULL(TRY_CONVERT(DATETIME2(3), NULLIF(s.[$DeliveredDateTime], '')), '1900-01-01') OR
-            ISNULL(t.[CreationDate-4], '1900-01-01') <> ISNULL(TRY_CONVERT(DATE, NULLIF(s.[CreationDate-4], '')), '1900-01-01') OR
-            ISNULL(t.[CreationTime-11], '') <> ISNULL(s.[CreationTime-11], '') OR
-            ISNULL(t.[FromEntryNo-2], -1) <> ISNULL(s.[FromEntryNo-2], -1) OR
-            ISNULL(t.[FromVATEntryNo-8], -1) <> ISNULL(s.[FromVATEntryNo-8], -1) OR
-            ISNULL(t.[No-1], -1) <> ISNULL(s.[No-1], -1) OR
-            ISNULL(t.[Reversed-10], 0) <> ISNULL(s.[Reversed-10], 0) OR
+            ISNULL(t.[AddressFormat-8], '') <> ISNULL(s.[AddressFormat-8], '') OR
+            ISNULL(t.[Code-1], '') <> ISNULL(s.[Code-1], '') OR
+            ISNULL(t.[ContactAddressFormat-9], '') <> ISNULL(s.[ContactAddressFormat-9], '') OR
+            ISNULL(t.[LastModifiedDateTime-11], '1900-01-01') <> ISNULL(TRY_CONVERT(DATETIME2(3), NULLIF(s.[LastModifiedDateTime-11], '')), '1900-01-01') OR
+            ISNULL(t.[Name-2], '') <> ISNULL(s.[Name-2], '') OR
             ISNULL(t.[SystemCreatedAt-2000000001], '1900-01-01') <> ISNULL(TRY_CONVERT(DATETIME2(3), NULLIF(s.[SystemCreatedAt-2000000001], '')), '1900-01-01') OR
             ISNULL(t.[SystemCreatedBy-2000000002], '') <> ISNULL(s.[SystemCreatedBy-2000000002], '') OR
             ISNULL(t.[SystemModifiedAt-2000000003], '1900-01-01') <> ISNULL(TRY_CONVERT(DATETIME2(3), NULLIF(s.[SystemModifiedAt-2000000003], '')), '1900-01-01') OR
-            ISNULL(t.[ToEntryNo-3], -1) <> ISNULL(s.[ToEntryNo-3], -1) OR
-            ISNULL(t.[ToVATEntryNo-9], -1) <> ISNULL(s.[ToVATEntryNo-9], -1) OR
-            ISNULL(t.[UserID-6], '') <> ISNULL(s.[UserID-6], '') OR
+            ISNULL(t.[WTIAAllocate-90100], 0) <> ISNULL(s.[WTIAAllocate-90100], 0) OR
             ISNULL(t.[timestamp-0], -1) <> ISNULL(s.[timestamp-0], -1);
 
         SET @Updated = @@ROWCOUNT;
@@ -139,10 +127,10 @@ BEGIN
         ---------------------------------------------------
         -- STEP 3: DELETE MISSING RECORDS
         ---------------------------------------------------
-		   DELETE FROM silver.GLRegister45
-	   WHERE [systemId-2000000000] NOT IN (
-		   SELECT [systemId-2000000000] FROM [test_lh].[dbo].[GLRegister45]
-	   );
+        DELETE FROM silver.CountryRegion9
+        WHERE [systemId-2000000000] NOT IN (
+            SELECT [systemId-2000000000] FROM [test_lh].[dbo].[CountryRegion9]
+        );       
         SET @Deleted = @@ROWCOUNT;
 
     END TRY
@@ -175,7 +163,7 @@ BEGIN
     VALUES
     (
         @RunId,
-        'GLRegister45',
+        'CountryRegion9',
         @StartTime,
         @EndTime,
         @Status,

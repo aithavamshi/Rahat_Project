@@ -1,12 +1,12 @@
----  EXEC [silver].[usp_IncrementalLoad_GLEntry17]
+---  EXEC silver.usp_IncrementalLoad_GLEntry17
 ---  SELECT * FROM silver.GLEntry17    
 ---  TRUNCATE TABLE silver.GLEntry17
 ---  select count(*) from silver.GLEntry17
 
 
 
-CREATE      PROCEDURE [silver].[usp_IncrementalLoad_GLEntry17]
-@RunId VARCHAR(100)
+CREATE             PROCEDURE silver.usp_IncrementalLoad_GLEntry17
+@RunId VARCHAR(100) = 'RunId'
 AS
 BEGIN
     ---------------------------------------------------
@@ -101,8 +101,8 @@ BEGIN
         [timestamp-0],
         [InsertDate]
        
-     )
-     SELECT
+    )
+    SELECT
         s.[GlobalDimension2Code-24],
         s.[Comment-5618],
         s.[ReasonCode-47],
@@ -170,11 +170,11 @@ BEGIN
         s.[timestamp-0],
         GETDATE()
        
-      FROM [test_lh].[dbo].[GLEntry17] s
-      LEFT JOIN silver.GLEntry17 t
-          ON s.[systemId-2000000000] = t.[systemId-2000000000]
-      WHERE t.[systemId-2000000000] IS NULL
-        AND s.[systemId-2000000000] IS NOT NULL;
+    FROM [test_lh].[dbo].[GLEntry17] s
+    LEFT JOIN silver.GLEntry17 t
+        ON s.[systemId-2000000000] = t.[systemId-2000000000]
+    WHERE t.[systemId-2000000000] IS NULL
+      AND s.[systemId-2000000000] IS NOT NULL;
 
         SET @Inserted = @@ROWCOUNT;
 
@@ -330,6 +330,7 @@ BEGIN
 		WHERE [systemId-2000000000] NOT IN (
 			SELECT [systemId-2000000000] FROM [test_lh].[dbo].[GLEntry17]
 		);
+	
         SET @Deleted = @@ROWCOUNT;
 
     END TRY
