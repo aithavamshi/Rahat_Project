@@ -4,7 +4,7 @@
 
 
 
-CREATE       PROCEDURE silver.usp_IncrementalLoad_SalespersonPurchaser13
+CREATE         PROCEDURE silver.usp_IncrementalLoad_SalespersonPurchaser13
 @RunId VARCHAR(100) = 'RunId'
 AS
 BEGIN
@@ -164,10 +164,13 @@ BEGIN
         ---------------------------------------------------
         -- STEP 3: DELETE MISSING RECORDS
         ---------------------------------------------------
-        DELETE FROM silver.SalespersonPurchaser13
-        WHERE [systemId-2000000000] NOT IN (
-             SELECT [systemId-2000000000] FROM [test_lh].[dbo].[SalespersonPurchaser13]
-        );       
+        DELETE t FROM silver.SalespersonPurchaser13 t
+        WHERE NOT EXISTS
+        (
+            SELECT 1
+            FROM [test_lh].[dbo].[SalespersonPurchaser13] s
+            WHERE s.[systemId-2000000000] = t.[systemId-2000000000]
+        );      
         SET @Deleted = @@ROWCOUNT;
 
     END TRY

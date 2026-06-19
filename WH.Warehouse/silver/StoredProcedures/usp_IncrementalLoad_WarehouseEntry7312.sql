@@ -3,7 +3,7 @@
 -- Truncate table [dwh].[silver].[WarehouseEntry7312]
 
 
-CREATE     PROCEDURE silver.usp_IncrementalLoad_WarehouseEntry7312
+CREATE       PROCEDURE silver.usp_IncrementalLoad_WarehouseEntry7312
 @RunId VARCHAR(100) = 'RunId'
 AS
 BEGIN
@@ -240,6 +240,7 @@ BEGIN
             FROM [test_lh].[dbo].[WarehouseEntry7312] s
             WHERE s.[systemId-2000000000] = t.[systemId-2000000000]
         );
+        
            
         SET @Deleted = @@ROWCOUNT;
 

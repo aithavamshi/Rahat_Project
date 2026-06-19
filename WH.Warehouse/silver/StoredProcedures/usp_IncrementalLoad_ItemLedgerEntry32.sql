@@ -2,7 +2,7 @@
 ---  select * from [WH].[silver].[ItemLedgerEntry32]
 ---  TRUNCATE TABLE [WH].[silver].[ItemLedgerEntry32]
 
-CREATE     PROCEDURE silver.usp_IncrementalLoad_ItemLedgerEntry32
+CREATE                     PROCEDURE silver.usp_IncrementalLoad_ItemLedgerEntry32
 @RunId VARCHAR(100) = 'RunId'
 AS
 BEGIN
@@ -152,10 +152,13 @@ BEGIN
         ---------------------------------------------------
         -- STEP 3: DELETE MISSING RECORDS
         ---------------------------------------------------
-        DELETE FROM silver.ItemLedgerEntry32
-        WHERE [systemId-2000000000] NOT IN (
-            SELECT [systemId-2000000000] FROM [test_lh].[dbo].[ItemLedgerEntry32]
-        );       
+        DELETE t FROM silver.ItemLedgerEntry32 t
+        WHERE NOT EXISTS
+        (
+            SELECT 1
+            FROM [test_lh].[dbo].[ItemLedgerEntry32] s
+            WHERE s.[systemId-2000000000] = t.[systemId-2000000000]
+        ); 
         SET @Deleted = @@ROWCOUNT;
 
     END TRY

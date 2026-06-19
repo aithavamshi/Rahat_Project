@@ -2,7 +2,7 @@
 ---  select * from silver.GLAccount15
 ---  TRUNCATE TABLE silver.GLAccount15
 
-CREATE     PROCEDURE silver.usp_IncrementalLoad_GLAccount15
+CREATE       PROCEDURE silver.usp_IncrementalLoad_GLAccount15
 @RunId VARCHAR(100) = 'RunId'
 AS
 BEGIN
@@ -129,12 +129,14 @@ BEGIN
         ---------------------------------------------------
         -- STEP 3: DELETE MISSING RECORDS
         ---------------------------------------------------
-               DELETE FROM silver.GLAccount15
-        WHERE [systemId-2000000000] NOT IN (
-            SELECT [systemId-2000000000]
-            FROM [test_lh].[dbo].[GLAccount15]
-            WHERE [systemId-2000000000] IS NOT NULL
-        );
+
+        DELETE t FROM silver.GLAccount15 t
+        WHERE NOT EXISTS
+        (
+            SELECT 1
+            FROM [test_lh].[dbo].[GLAccount15] s
+            WHERE s.[systemId-2000000000] = t.[systemId-2000000000]
+        ); 
         SET @Deleted = @@ROWCOUNT;
 
     END TRY

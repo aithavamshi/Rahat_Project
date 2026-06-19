@@ -218,7 +218,7 @@ run_id = 'abc'
 # MAGIC         .mode("append") \
 # MAGIC         .format("delta") \
 # MAGIC         .option("mergeSchema", "true")\
-# MAGIC         .save("Tables/audit_log_table_testing_sa")
+# MAGIC         .save("Tables/audit_log_table_testing")
 # MAGIC 
 # MAGIC     #print(f"Audit log written for: {table_name} | Status: {status}")
 # MAGIC 
@@ -448,6 +448,23 @@ run_id = 'abc'
 # META   "language_group": "synapse_pyspark",
 # META   "frozen": false,
 # META   "editable": true
+# META }
+
+# CELL ********************
+
+from notebookutils import mssparkutils
+
+files = mssparkutils.fs.ls("Files")
+for f in files:
+    print(f.name)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark",
+# META   "frozen": true,
+# META   "editable": false
 # META }
 
 # MARKDOWN ********************

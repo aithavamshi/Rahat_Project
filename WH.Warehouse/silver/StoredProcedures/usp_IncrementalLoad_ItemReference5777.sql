@@ -2,7 +2,7 @@
 --select * from [dwh].[silver].[ItemReference5777]
 --Truncate table [dwh].[silver].[ItemReference5777]
 
-CREATE     PROCEDURE silver.usp_IncrementalLoad_ItemReference5777
+CREATE                     PROCEDURE silver.usp_IncrementalLoad_ItemReference5777
 @RunId VARCHAR(100) = 'RunId'
 AS
 BEGIN
@@ -31,7 +31,7 @@ BEGIN
         ---------------------------------------------------
         -- STEP 1: INSERT NEW RECORDS
         ---------------------------------------------------
-        INSERT INTO [dwh].[silver].[ItemReference5777] (
+        INSERT INTO [WH].[silver].[ItemReference5777] (
             [Description2-9],
             [ReferenceTypeNo-5],
             [Description-7],
@@ -124,12 +124,13 @@ BEGIN
         ---------------------------------------------------
         -- STEP 3: DELETE MISSING RECORDS
         ---------------------------------------------------
-        DELETE FROM [WH].[silver].[ItemReference5777]
-        WHERE [systemId-2000000000] NOT IN (
-            SELECT [systemId-2000000000]
-            FROM [test_lh].[dbo].[ItemReference5777]
-            WHERE [systemId-2000000000] IS NOT NULL
-        );       
+        DELETE t FROM [WH].[silver].[ItemReference5777] t
+        WHERE NOT EXISTS
+        (
+            SELECT 1
+            FROM [test_lh].[dbo].[ItemReference5777] s
+            WHERE s.[systemId-2000000000] = t.[systemId-2000000000]
+        );      
         SET @Deleted = @@ROWCOUNT;
 
     END TRY

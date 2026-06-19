@@ -4,7 +4,7 @@
 
 
 
-CREATE     PROCEDURE silver.usp_IncrementalLoad_WTUSSLALicense88103
+CREATE       PROCEDURE silver.usp_IncrementalLoad_WTUSSLALicense88103
 @RunId VARCHAR(100) = 'RunId'
 AS
 BEGIN
@@ -162,11 +162,13 @@ BEGIN
         ---------------------------------------------------
         -- STEP 3: DELETE MISSING RECORDS
         ---------------------------------------------------
-        DELETE FROM silver.WTUSSLALicense88103
-        WHERE [systemId-2000000000] NOT IN (
-            SELECT [systemId-2000000000]
-            FROM [test_lh].[dbo].[WTUSSLALicense88103]
-        );      
+        DELETE t FROM silver.WTUSSLALicense88103 t
+        WHERE NOT EXISTS
+        (
+            SELECT 1
+            FROM [test_lh].[dbo].[WTUSSLALicense88103] s
+            WHERE s.[systemId-2000000000] = t.[systemId-2000000000]
+        );        
         SET @Deleted = @@ROWCOUNT;
 
     END TRY

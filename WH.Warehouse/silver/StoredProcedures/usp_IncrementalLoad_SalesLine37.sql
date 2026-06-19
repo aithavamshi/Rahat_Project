@@ -3,7 +3,7 @@
 --Truncate table [dwh].[silver].[Test_SalesLine37]
 --Drop table [dwh].[silver].[Test_SalesLine37]
 
-CREATE       PROCEDURE silver.usp_IncrementalLoad_SalesLine37
+CREATE                       PROCEDURE silver.usp_IncrementalLoad_SalesLine37
 @RunId VARCHAR(100) = 'RunId'
 AS
 BEGIN
@@ -32,7 +32,7 @@ BEGIN
         ---------------------------------------------------
         -- STEP 1: INSERT NEW RECORDS
         ---------------------------------------------------
-        INSERT INTO [dwh].[silver].[SalesLine37] (
+        INSERT INTO [WH].[silver].[SalesLine37] (
             [BinCode-5403],
             [WTBASampleReasonCode-87700],
             [WTBAOrderChargeCode-87600],
@@ -934,13 +934,15 @@ BEGIN
 
         ---------------------------------------------------
         -- STEP 3: DELETE MISSING RECORDS
-        ---------------------------------------------------
-        DELETE FROM [WH].[silver].[SalesLine37]
-        WHERE [systemId-2000000000] NOT IN (
-            SELECT [systemId-2000000000]
-            FROM [test_lh].[dbo].[SalesLine37]
-            WHERE [systemId-2000000000] IS NOT NULL
-        );       
+        ---------------------------------------------------   
+
+        DELETE t FROM [WH].[silver].[SalesLine37] t
+        WHERE NOT EXISTS
+        (
+            SELECT 1
+            FROM [test_lh].[dbo].[SalesLine37] s
+            WHERE s.[systemId-2000000000] = t.[systemId-2000000000]
+        );    
         SET @Deleted = @@ROWCOUNT;
 
     END TRY

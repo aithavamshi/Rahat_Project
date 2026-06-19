@@ -2,7 +2,7 @@
 --select * from [dwh].[silver].[WTBAVintage87008]
 --Truncate table [dwh].[silver].[WTBAVintage87008]
 
-CREATE     PROCEDURE silver.usp_IncrementalLoad_WTBAVintage87008
+CREATE       PROCEDURE silver.usp_IncrementalLoad_WTBAVintage87008
 @RunId VARCHAR(100) = 'RunId'
 AS
 BEGIN
@@ -96,12 +96,13 @@ BEGIN
         ---------------------------------------------------
         -- STEP 3: DELETE MISSING RECORDS
         ---------------------------------------------------
-        DELETE FROM [WH].[silver].[WTBAVintage87008]
-        WHERE [systemId-2000000000] NOT IN (
-            SELECT [systemId-2000000000]
-            FROM [test_lh].[dbo].[WTBAVintage87008]
-            WHERE [systemId-2000000000] IS NOT NULL
-        );       
+        DELETE t FROM [WH].[silver].[WTBAVintage87008] t
+        WHERE NOT EXISTS
+        (
+            SELECT 1
+            FROM [test_lh].[dbo].[WTBAVintage87008] s
+            WHERE s.[systemId-2000000000] = t.[systemId-2000000000]
+        );      
         SET @Deleted = @@ROWCOUNT;
 
     END TRY

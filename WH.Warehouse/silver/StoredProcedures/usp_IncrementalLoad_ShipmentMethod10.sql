@@ -3,7 +3,7 @@
 ---  TRUNCATE TABLE silver.ShipmentMethod10
 
 
-CREATE       PROCEDURE silver.usp_IncrementalLoad_ShipmentMethod10
+CREATE         PROCEDURE silver.usp_IncrementalLoad_ShipmentMethod10
 @RunId VARCHAR(100) = 'RunId'
 AS
 BEGIN
@@ -107,11 +107,13 @@ BEGIN
         ---------------------------------------------------
         -- STEP 3: DELETE MISSING RECORDS
         ---------------------------------------------------
-        DELETE FROM silver.ShipmentMethod10
-        WHERE [systemId-2000000000] NOT IN (
-            SELECT [systemId-2000000000] FROM [test_lh].[dbo].[ShipmentMethod10]
-	    
-        );       
+        DELETE t FROM silver.ShipmentMethod10 t
+        WHERE NOT EXISTS
+        (
+            SELECT 1
+            FROM [test_lh].[dbo].[ShipmentMethod10] s
+            WHERE s.[systemId-2000000000] = t.[systemId-2000000000]
+        );      
         SET @Deleted = @@ROWCOUNT;
 
     END TRY

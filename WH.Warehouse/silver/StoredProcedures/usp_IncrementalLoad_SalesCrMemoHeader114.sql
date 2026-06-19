@@ -2,7 +2,7 @@
 ---  SELECT * FROM silver.SalesCrMemoHeader114
 ---  truncate table silver.SalesCrMemoHeader114
 
-CREATE       PROCEDURE silver.usp_IncrementalLoad_SalesCrMemoHeader114
+CREATE         PROCEDURE silver.usp_IncrementalLoad_SalesCrMemoHeader114
 @RunId VARCHAR(100) = 'RunId'
 AS
 BEGIN
@@ -355,10 +355,14 @@ BEGIN
         ---------------------------------------------------
         -- STEP 3: DELETE MISSING RECORDS
         ---------------------------------------------------
-             DELETE FROM silver.SalesCrMemoHeader114
-        WHERE [systemId-2000000000] NOT IN (
-            SELECT [systemId-2000000000] FROM [test_lh].[dbo].[SalesCrMemoHeader114]
-        );
+
+            DELETE t FROM silver.SalesCrMemoHeader114 t
+        WHERE NOT EXISTS
+        (
+            SELECT 1
+            FROM [test_lh].[dbo].[SalesCrMemoHeader114] s
+            WHERE s.[systemId-2000000000] = t.[systemId-2000000000]
+        ); 
         SET @Deleted = @@ROWCOUNT;
 
     END TRY

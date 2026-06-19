@@ -117,6 +117,281 @@
         ]
       },
       {
+        "name": "GLEntry17(1)",
+        "sourceLineageTag": "[gold].[GLEntry17]",
+        "columns": [
+          {
+            "name": "GenProdPostingGroup",
+            "dataType": "string",
+            "sourceColumn": "GenProdPostingGroup",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "GenProdPostingGroup",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "GenBusPostingGroup",
+            "dataType": "string",
+            "sourceColumn": "GenBusPostingGroup",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "GenBusPostingGroup",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "GlobalDimension1Code",
+            "dataType": "string",
+            "sourceColumn": "GlobalDimension1Code",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "GlobalDimension1Code",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SourceNameWC",
+            "dataType": "string",
+            "sourceColumn": "SourceNameWC",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SourceNameWC",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SourceNo",
+            "dataType": "string",
+            "sourceColumn": "SourceNo",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SourceNo",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SourceCode",
+            "dataType": "string",
+            "sourceColumn": "SourceCode",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SourceCode",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Description",
+            "dataType": "string",
+            "sourceColumn": "Description",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Description",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "BalAccountType",
+            "dataType": "string",
+            "sourceColumn": "BalAccountType",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "BalAccountType",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "DocumentType",
+            "dataType": "string",
+            "sourceColumn": "DocumentType",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "DocumentType",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SourceCurrencyAmount",
+            "dataType": "double",
+            "sourceColumn": "SourceCurrencyAmount",
+            "sourceProviderType": "real",
+            "sourceLineageTag": "SourceCurrencyAmount",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "SourceType",
+            "dataType": "string",
+            "sourceColumn": "SourceType",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SourceType",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Amount",
+            "dataType": "double",
+            "sourceColumn": "Amount",
+            "sourceProviderType": "real",
+            "sourceLineageTag": "Amount",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "DocumentDate",
+            "dataType": "dateTime",
+            "sourceColumn": "DocumentDate",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "DocumentDate",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "EntryNo",
+            "dataType": "int64",
+            "sourceColumn": "EntryNo",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "EntryNo",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PostingDate",
+            "dataType": "dateTime",
+            "sourceColumn": "PostingDate",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "PostingDate",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "InsertDate",
+            "dataType": "dateTime",
+            "sourceColumn": "InsertDate",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "InsertDate",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "UpdateDate",
+            "dataType": "dateTime",
+            "sourceColumn": "UpdateDate",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "UpdateDate",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "GLEntry17",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "gold"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
         "name": "Item27",
         "sourceLineageTag": "[gold].[Item27]",
         "columns": [

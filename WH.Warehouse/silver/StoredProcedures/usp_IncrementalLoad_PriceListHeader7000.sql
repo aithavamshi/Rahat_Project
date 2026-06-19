@@ -2,7 +2,7 @@
 --select * from [dwh].[silver].[PriceListHeader7000]
 --Truncate table [dwh].[silver].[PriceListHeader7000]
 
-CREATE       PROCEDURE silver.usp_IncrementalLoad_PriceListHeader7000
+CREATE         PROCEDURE silver.usp_IncrementalLoad_PriceListHeader7000
 @RunId VARCHAR(100) ='RunId'
 AS
 BEGIN
@@ -140,11 +140,12 @@ BEGIN
         ---------------------------------------------------
         -- STEP 3: DELETE MISSING RECORDS
         ---------------------------------------------------
-        DELETE FROM [WH].[silver].[PriceListHeader7000]
-        WHERE [systemId-2000000000] NOT IN (
-            SELECT [systemId-2000000000]
-            FROM [test_lh].[dbo].[PriceListHeader7000]
-            WHERE [systemId-2000000000] IS NOT NULL
+         DELETE t FROM [WH].[silver].[PriceListHeader7000] t
+        WHERE NOT EXISTS
+        (
+            SELECT 1
+            FROM [test_lh].[dbo].[PriceListHeader7000] s
+            WHERE s.[systemId-2000000000] = t.[systemId-2000000000]
         );       
         SET @Deleted = @@ROWCOUNT;
 

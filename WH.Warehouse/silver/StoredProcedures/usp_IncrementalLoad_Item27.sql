@@ -3,7 +3,7 @@
 ---  TRUNCATE TABLE silver.Item27
 
 
-CREATE             PROCEDURE silver.usp_IncrementalLoad_Item27
+CREATE               PROCEDURE silver.usp_IncrementalLoad_Item27
 @RunId VARCHAR(100) = 'RunId'
 AS
 BEGIN
@@ -1134,11 +1134,14 @@ BEGIN
         ---------------------------------------------------
         -- STEP 3: DELETE MISSING RECORDS
         ---------------------------------------------------
-	    DELETE t
-	    FROM [WH].[silver].[Item27] t
-	    LEFT JOIN [test_lh].[dbo].[Item27] s
-            ON t.[systemId-2000000000] = s.[systemId-2000000000]
-	    WHERE s.[systemId-2000000000] IS NULL;       
+		DELETE t FROM [WH].[silver].[Item27] t
+        WHERE NOT EXISTS
+        (
+            SELECT 1
+            FROM [test_lh].[dbo].[Item27] s
+            WHERE s.[systemId-2000000000] = t.[systemId-2000000000]
+        ); 
+		     
             SET @Deleted = @@ROWCOUNT;
 
     END TRY

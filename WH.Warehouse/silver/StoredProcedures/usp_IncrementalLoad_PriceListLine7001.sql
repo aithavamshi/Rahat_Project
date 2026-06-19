@@ -3,7 +3,7 @@
 ---  TRUNCATE TABLE [WH].[silver].[PriceListLine7001]
 
 
-CREATE     PROCEDURE silver.usp_IncrementalLoad_PriceListLine7001
+CREATE       PROCEDURE silver.usp_IncrementalLoad_PriceListLine7001
 
 @RunId VARCHAR(100) = 'RunId'
 AS
@@ -193,10 +193,13 @@ BEGIN
         ---------------------------------------------------
         -- STEP 3: DELETE MISSING RECORDS
         ---------------------------------------------------
-        DELETE FROM silver.PriceListLine7001
-        WHERE [systemId-2000000000] NOT IN (
-            SELECT [systemId-2000000000]
-            FROM [test_lh].[dbo].[PriceListLine7001]
+
+        DELETE t FROM silver.PriceListLine7001 t
+        WHERE NOT EXISTS
+        (
+            SELECT 1
+            FROM [test_lh].[dbo].[PriceListLine7001] s
+            WHERE s.[systemId-2000000000] = t.[systemId-2000000000]
         );       
         SET @Deleted = @@ROWCOUNT;
 

@@ -51,3 +51,26 @@ df.coalesce(1).write \
 # META   "language": "python",
 # META   "language_group": "synapse_pyspark"
 # META }
+
+# CELL ********************
+
+tables = [t.name for t in spark.catalog.listTables()]
+
+for table_name in tables:
+    print(f"Exporting {table_name}...")
+
+    df = spark.read.table(table_name)
+
+    df.coalesce(1).write \
+        .mode("overwrite") \
+        .option("header", "true") \
+        .csv(f"Files/Exports/{table_name}")
+
+print("All tables exported.")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }

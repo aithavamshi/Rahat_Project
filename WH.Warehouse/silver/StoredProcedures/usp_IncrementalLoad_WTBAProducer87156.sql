@@ -3,7 +3,7 @@
 ---  TRUNCATE TABLE silver.WTBAProducer87156
 
 
-CREATE     PROCEDURE silver.usp_IncrementalLoad_WTBAProducer87156
+CREATE       PROCEDURE silver.usp_IncrementalLoad_WTBAProducer87156
 @RunId VARCHAR(100) = 'RunId'
 AS
 BEGIN
@@ -169,10 +169,13 @@ BEGIN
         ---------------------------------------------------
         -- STEP 3: DELETE MISSING RECORDS
         ---------------------------------------------------
-        DELETE FROM silver.WTBAProducer87156
-        WHERE [systemId-2000000000] NOT IN (
-            SELECT [systemId-2000000000] FROM [test_lh].[dbo].[WTBAProducer87156]
-        );       
+        DELETE t FROM silver.WTBAProducer87156 t
+        WHERE NOT EXISTS
+        (
+            SELECT 1
+            FROM [test_lh].[dbo].[WTBAProducer87156] s
+            WHERE s.[systemId-2000000000] = t.[systemId-2000000000]
+        );      
         SET @Deleted = @@ROWCOUNT;
 
     END TRY

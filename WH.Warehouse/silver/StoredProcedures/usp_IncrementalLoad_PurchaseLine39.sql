@@ -4,7 +4,7 @@
 
 
 
-CREATE     PROCEDURE silver.usp_IncrementalLoad_PurchaseLine39
+CREATE                           PROCEDURE silver.usp_IncrementalLoad_PurchaseLine39
 @RunId VARCHAR(100) = 'RunId'
 AS
 BEGIN
@@ -45,7 +45,7 @@ BEGIN
           [AmtRcdNotInvoicedLCY-93], [AppltoItemEntry-38], [AttachedtoLineNo-80], [BlanketOrderLineNo-98],
           [CompletelyReceived-5752], [CopiedFromPostedDoc-6610], [DeprAcquisitionCost-5606], [DepruntilFAPostingDate-5605],
           [DimensionSetID-480], [DirectUnitCost-22], [Discount-8055], [DocumentNo-3], [DocumentType-1],
-          [DropShipment-73], [ERCGenForDocLineNo-71276917], [ERCGenForDocType-71276915], [ERCPQDispositionStatus-71276920],
+          [DropShipment-73],  [ERCGenForDocLineNo-71276917], [ERCGenForDocType-71276915], [ERCPQDispositionStatus-71276920],
           [EmissionCH4-6218], [EmissionCH4PerUnit-6215], [EmissionCO2-6217], [EmissionCO2PerUnit-6214],
           [EmissionN2O-6219], [EmissionN2OPerUnit-6216], [FAPostingType-5601], [Finished-99000753], [GSTHST-10025],
           [GrossWeight-34], [ICPartnerRefType-107], [IRS1099Liable-10022], [IndirectCost-54],
@@ -590,10 +590,13 @@ BEGIN
         ---------------------------------------------------
         -- STEP 3: DELETE MISSING RECORDS
         ---------------------------------------------------
-        DELETE FROM silver.PurchaseLine39
-        WHERE [systemId-2000000000] NOT IN (
-            SELECT [systemId-2000000000] FROM [test_lh].[dbo].[PurchaseLine39]
-        );       
+		DELETE t FROM silver.PurchaseLine39 t
+        WHERE NOT EXISTS
+        (
+            SELECT 1
+            FROM [test_lh].[dbo].[PurchaseLine39] s
+            WHERE s.[systemId-2000000000] = t.[systemId-2000000000]
+        );     
         SET @Deleted = @@ROWCOUNT;
 
     END TRY

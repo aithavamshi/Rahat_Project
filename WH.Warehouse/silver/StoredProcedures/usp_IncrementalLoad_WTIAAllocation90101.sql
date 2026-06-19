@@ -2,7 +2,7 @@
 --select * from [dwh].[silver].[WTIAAllocation90101]
 --Truncate table [dwh].[silver].[WTIAAllocation90101]
 
-CREATE     PROCEDURE silver.usp_IncrementalLoad_WTIAAllocation90101 
+CREATE       PROCEDURE silver.usp_IncrementalLoad_WTIAAllocation90101 
 @RunId VARCHAR(100) = 'RunId'
 AS
 BEGIN
@@ -125,9 +125,12 @@ BEGIN
         ---------------------------------------------------
         -- STEP 3: DELETE MISSING RECORDS
         ---------------------------------------------------
-        DELETE FROM [WH].[silver].[WTIAAllocation90101]
-        WHERE [systemId-2000000000] NOT IN (
-            SELECT [systemId-2000000000] FROM [test_lh].[dbo].[WTIAAllocation90101]
+        DELETE t FROM [WH].[silver].[WTIAAllocation90101] t
+        WHERE NOT EXISTS
+        (
+            SELECT 1
+            FROM [test_lh].[dbo].[WTIAAllocation90101] s
+            WHERE s.[systemId-2000000000] = t.[systemId-2000000000]
         );
            
         SET @Deleted = @@ROWCOUNT;

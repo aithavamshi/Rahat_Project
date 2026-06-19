@@ -5,7 +5,7 @@
 --SELECT * FROM silver.WTBABottleSize87003 
 --WHERE [systemId-2000000000] = '{4745F6CE-1701-F111-8405-7C1E52F51665}'
 
-CREATE       PROCEDURE silver.usp_IncrementalLoad_WTBABottleSize87003
+CREATE         PROCEDURE silver.usp_IncrementalLoad_WTBABottleSize87003
 @RunId VARCHAR(100) = 'RunId'
 AS
 BEGIN
@@ -113,9 +113,12 @@ BEGIN
         ---------------------------------------------------
         -- STEP 3: DELETE MISSING RECORDS
         ---------------------------------------------------
-         DELETE FROM silver.WTBABottleSize87003
-        WHERE [systemId-2000000000] NOT IN (
-            SELECT [systemId-2000000000] FROM [test_lh].[dbo].[WTBABottleSize87003]
+        DELETE t FROM silver.WTBABottleSize87003 t
+        WHERE NOT EXISTS
+        (
+            SELECT 1
+            FROM [test_lh].[dbo].[WTBABottleSize87003] s
+            WHERE s.[systemId-2000000000] = t.[systemId-2000000000]
         );     
         SET @Deleted = @@ROWCOUNT;
 
